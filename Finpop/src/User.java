@@ -5,15 +5,29 @@ import java.util.Date;
 
 public class User {
 	
-	//Change the shit neccessary
-	
 	private int userid;
 	private String firstName;
 	private String lastName;
-	private Date dob;
-	private String email;
+	private String username;
+	private String password;
 	ArrayList<UserPortfolio> port = new ArrayList();
 
+	public User(int userid, String firstName, String lastName, String username, String password){
+		this.setUserid(userid);
+		this.setFirstName(firstName);
+		this.setLastName(lastName);
+		this.setPassword(password);
+		this.setUsername(username);
+	}
+	
+	public User(){
+		this.firstName = "";
+		this.userid = -1;
+		this.lastName = "";
+		this.username = "";
+		this.password = "";
+	}
+	
 	public int getUserid() {
 		return userid;
 	}
@@ -38,26 +52,19 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public Date getDob() {
-		return dob;
+	public String getUsername() {
+		return this.username;
 	}
 
-	public void setDob(Date dob) {
-		this.dob = dob;
+	public void setUsername(String s) {
+		this.username = s;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getPassword() {
+		return this.password;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	@Override
-	public String toString() {
-		return "User [userid=" + userid + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", dob=" + dob + ", email="
-				+ email + "]";
+	public void setPassword(String s) {
+		this.password = s;
 	}
 }
