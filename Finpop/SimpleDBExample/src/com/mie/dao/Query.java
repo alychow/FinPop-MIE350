@@ -21,27 +21,34 @@ public class Query {
 
 	/* ---------------------------------INSERT QUERIES-----------------------------------*/
 	
-	public void insertUser(User user) {
+	public String insertUser(User user) {
+		
+		String inserted = new String();
+		
 		String insertQuery = "INSERT INTO User "
-				+ "(ID,Username,Password,FirstName,LastName) values (?, ?, ?, ?, ?)";
+				+ "(Username,Password,FirstName,LastName) values (?, ?, ?, ?)";
 		
 		if(this.isValidUsername(user.getUsername())){
 			try {
 				PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
-				preparedStatement.setInt(1, user.getUserid());
-				preparedStatement.setString(2, user.getUsername());
-				preparedStatement.setString(3, user.getPassword());
-				preparedStatement.setString(4, user.getFirstName());
-				preparedStatement.setString(5, user.getLastName());
+				preparedStatement.setString(1, user.getUsername());
+				preparedStatement.setString(2, user.getPassword());
+				preparedStatement.setString(3, user.getFirstName());
+				preparedStatement.setString(4, user.getLastName());
 				preparedStatement.executeUpdate();
 
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			
+			inserted = "User " + user.getFirstName() + " " + user.getLastName() + " was inserted.";
 		}
 		else{
 			//That username already exists!
+			inserted = "That username already exists!";
 		}
+		
+		return inserted;
 		
 	}
 	
@@ -84,7 +91,7 @@ public class Query {
 	
 	public void updateUsername(int userID, String newUsername) {
 		
-		String updateQuery = "UPDATE Users SET Username=? WHERE ID=?";
+		String updateQuery = "UPDATE Users SET Username='?' WHERE ID=?";
 		
 		try {
 			PreparedStatement ps = connection.prepareStatement(updateQuery);
@@ -99,7 +106,7 @@ public class Query {
 	
 	public void updatePassword(int userID, String newPassword) {
 
-		String updateQuery = "UPDATE Users SET Password=? WHERE ID=?";
+		String updateQuery = "UPDATE Users SET Password='?' WHERE ID=?";
 
 		try {
 			PreparedStatement ps = connection.prepareStatement(updateQuery);
@@ -114,7 +121,7 @@ public class Query {
 	
 	public void updateFirstName(int userID, String newName) {
 
-		String updateQuery = "UPDATE Users SET FirstName=? WHERE ID=?";
+		String updateQuery = "UPDATE Users SET FirstName='?' WHERE ID=?";
 
 		try {
 			PreparedStatement ps = connection.prepareStatement(updateQuery);
@@ -129,7 +136,7 @@ public class Query {
 	
 	public void updateLastName(int userID, String newName) {
 
-		String updateQuery = "UPDATE Users SET LastName=? WHERE ID=?";
+		String updateQuery = "UPDATE Users SET LastName='?' WHERE ID=?";
 
 		try {
 			PreparedStatement ps = connection.prepareStatement(updateQuery);
@@ -150,14 +157,17 @@ public class Query {
 		ArrayList<String> suggestedResults = new ArrayList<String>();
 		
 		String searchQuery = "SELECT C.Ticker AS Search FROM Company C WHERE C.Ticker "
-				+ "LIKE '" + input + "*' UNION SELECT C.CompanyName AS Search FROM Company C "
-				+ "WHERE C.CompanyName LIKE '" + input + "*' UNION SELECT H.HedgefundName "
-				+ "AS Search FROM Hedgefund H WHERE H.HedgefundName LIKE '" + input + "*'";
+				+ "LIKE ?" + "* UNION SELECT C.CompanyName AS Search FROM Company C "
+				+ "WHERE C.CompanyName LIKE ?" + "* UNION SELECT H.HedgefundName "
+				+ "AS Search FROM Hedgefund H WHERE H.HedgefundName LIKE ?" + "*";
 		
 		try {
 			
-			Statement stat = connection.createStatement();
-			ResultSet rs = stat.executeQuery(searchQuery);
+			PreparedStatement ps = connection.prepareStatement(searchQuery);
+			ps.setString(1, input);
+			ps.setString(2, input);
+			ps.setString(3, input);
+			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				suggestedResults.add(rs.getString("Search"));
 			}
@@ -171,11 +181,12 @@ public class Query {
 	//Returns the company object that was searched
 	public Company selectCompany (String search){
 		Company comp = new Company();
-		String searchQuery = "SELECT * FROM Company WHERE CompanyName = " + search;
+		String searchQuery = "SELECT * FROM Company WHERE CompanyName = '?'";
 		
 		try{
-			Statement stat = connection.createStatement();
-			ResultSet rs = stat.executeQuery(searchQuery);
+			PreparedStatement ps = connection.prepareStatement(searchQuery);
+			ps.setString(1, search);
+			ResultSet rs = ps.executeQuery();
 			rs.next();
 			comp.setCompName(rs.getString(1));
 			comp.setTicker(rs.getString(2));
@@ -195,11 +206,12 @@ public class Query {
 	public ArrayList<String> selectCompHedgeList(String comp){
 		
 		ArrayList<String> hedgeList = new ArrayList<String>();
-		String searchQuery = "SELECT HedgefundName FROM InvestsIn WHERE CompanyName = " + comp;
+		String searchQuery = "SELECT HedgefundName FROM InvestsIn WHERE CompanyName = '?'";
 		
 		try{
-			Statement stat = connection.createStatement();
-			ResultSet rs = stat.executeQuery(searchQuery);
+			PreparedStatement ps = connection.prepareStatement(searchQuery);
+			ps.setString(1, comp);
+			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				hedgeList.add(rs.getString("HedgefundName"));
 			}
@@ -216,11 +228,13 @@ public class Query {
 	public ArrayList<InvestsIn> selectHedgeInvestIn(String hedgeName){
 		ArrayList<InvestsIn> compList = new ArrayList<InvestsIn>();
 		InvestsIn inv = new InvestsIn();
-		String searchQuery = "SELECT I.CompanyName, I.Ticker, I.SharesOwned FROM InvestsIn I WHERE I.HedgefundName = " + hedgeName;
+		String searchQuery = "SELECT I.CompanyName, I.Ticker, I.SharesOwned "
+				+ "FROM InvestsIn I WHERE I.HedgefundName = '?'";
 		
 		try{
-			Statement stat = connection.createStatement();
-			ResultSet rs = stat.executeQuery(searchQuery);
+			PreparedStatement ps = connection.prepareStatement(searchQuery);
+			ps.setString(1, hedgeName);
+			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				inv.setCompanyName(rs.getString("CompanyName"));
 				inv.setTicker(rs.getString("Ticker"));
@@ -241,14 +255,15 @@ public class Query {
 				+ "P.NumberShares AS NumberShares, C.StockPrice AS StockPrice, "
 				+ "C.StockPrice*P.NumberShares AS TotalMoney FROM "
 				+ "Portfolio P INNER JOIN Company C ON P.Ticker = C.Ticker "
-				+ "WHERE P.UserID = " + userID;
+				+ "WHERE P.UserID = ?";
 		
 		ArrayList<UserPortfolio> investments = new ArrayList<UserPortfolio>();
 		UserPortfolio investment = new UserPortfolio();
 		
 		try{
-			Statement stat = connection.createStatement();
-			ResultSet rs = stat.executeQuery(searchQuery);
+			PreparedStatement ps = connection.prepareStatement(searchQuery);
+			ps.setInt(1, userID);
+			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				investment.setCompName(rs.getString("CompanyName"));
 				investment.setNumShares(rs.getInt("NumberShares"));
@@ -271,11 +286,12 @@ public class Query {
 	//Returns if is a company
 	public boolean isCompany(String compName){
 		boolean exists = true;
-		String searchQuery = "SELECT * FROM Company WHERE CompanyName = " + compName;
+		String searchQuery = "SELECT * FROM Company WHERE CompanyName = '?'";
 		
 		try{
-			Statement stat = connection.createStatement();
-			ResultSet rs = stat.executeQuery(searchQuery);
+			PreparedStatement ps = connection.prepareStatement(searchQuery);
+			ps.setString(1, compName);
+			ResultSet rs = ps.executeQuery();
 			rs.next();
 			if(rs.wasNull()) exists = false;
 		}
@@ -289,11 +305,12 @@ public class Query {
 	//Returns if is a ticker
 	public boolean isTicker(String ticker){
 		boolean exists = true;
-		String searchQuery = "SELECT * FROM Company WHERE Ticker = " + ticker;
+		String searchQuery = "SELECT * FROM Company WHERE Ticker = '?'";
 		
 		try{
-			Statement stat = connection.createStatement();
-			ResultSet rs = stat.executeQuery(searchQuery);
+			PreparedStatement ps = connection.prepareStatement(searchQuery);
+			ps.setString(1, ticker);
+			ResultSet rs = ps.executeQuery();
 			rs.next();
 			if(rs.wasNull()) exists = false;
 		}
@@ -307,11 +324,12 @@ public class Query {
 	//Returns if is hedgefund
 	public boolean isHedgefund(String hedgeName){
 		boolean exists = true;
-		String searchQuery = "SELECT * FROM Hedgefund WHERE HedgefundName = " + hedgeName;
+		String searchQuery = "SELECT * FROM Hedgefund WHERE HedgefundName = '?'";
 		
 		try{
-			Statement stat = connection.createStatement();
-			ResultSet rs = stat.executeQuery(searchQuery);
+			PreparedStatement ps = connection.prepareStatement(searchQuery);
+			ps.setString(1, hedgeName);
+			ResultSet rs = ps.executeQuery();
 			rs.next();
 			if(rs.wasNull()) exists = false;
 		}
@@ -326,12 +344,12 @@ public class Query {
 	public boolean isValidUsername(String username){
 		boolean validName = true;
 		
-		String nameQuery = "SELECT U.Username FROM User WHERE U.Username = ?";
+		String nameQuery = "SELECT U.Username FROM User U WHERE U.Username = ?";
 		
 		try{
 			PreparedStatement ps = connection.prepareStatement(nameQuery);
 			ps.setString(1, username);
-			ResultSet rs = ps.executeQuery(nameQuery);
+			ResultSet rs = ps.executeQuery();
 			rs.next();
 			if(!rs.wasNull()){
 				//Username already exists!
@@ -350,10 +368,10 @@ public class Query {
 		boolean correct = true;
 		
 		String usernameExistsQuery = "SELECT U.Username FROM User U "
-				+ "WHERE U.Username = ?";
+				+ "WHERE U.Username = '?'";
 		
 		String matchQuery = "SELECT U.Username, U.Password FROM User U "
-				+ "WHERE U.Username = ? AND U.Password = ?";
+				+ "WHERE U.Username = '?' AND U.Password = '?'";
 		
 		try{
 			PreparedStatement ps = connection.prepareStatement(usernameExistsQuery);

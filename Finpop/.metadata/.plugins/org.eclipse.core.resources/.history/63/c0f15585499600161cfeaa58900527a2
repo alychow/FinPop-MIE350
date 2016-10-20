@@ -1,0 +1,10 @@
+<div id="footer">
+	<table>
+		<tr>
+			<thead>First Name</thead>
+			<thead>Last Name</thead>
+			<thead>Username</thead>
+			<thead>Password</thead>
+		</tr>
+	</table>
+</div>

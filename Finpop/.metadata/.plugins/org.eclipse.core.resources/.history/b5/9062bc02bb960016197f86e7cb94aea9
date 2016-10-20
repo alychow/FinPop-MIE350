@@ -1,0 +1,26 @@
+<div>
+<form action="UserController" method="get">
+	<table border=1>
+	
+	<thead>
+		<tr>
+			<td>Username</td>
+			<td>Password</td>
+			<td>First Name</td>
+			<td>Last Name</td>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr>
+			<td><input type="text" name="firstname"></td>
+			<td><input type="text" name="lastname"></td>
+			<td><input type="text" name="username"></td>
+			<td><input type="text" name="password"></td>
+		</tr>
+		<tr><input type="submit"/></tr>
+	</tbody>
+		
+	</table>
+</form>
+</div>

@@ -1,0 +1,18 @@
+<div>
+<form action="UserController">
+	<table>
+		<tr>
+			<thead>First Name</thead>
+			<thead>Last Name</thead>
+			<thead>Username</thead>
+			<thead>Password</thead>
+		</tr>
+		<tr>
+			<td><input type="text" name="firstname"></td>
+			<td><input type="text" name="lastname"></td>
+			<td><input type="text" name="username"></td>
+			<td><input type="text" name="password"></td>
+		</tr>
+	</table>
+</form>
+</div>

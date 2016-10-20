@@ -8,13 +8,13 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/SimpleDBExample/Jar files/commons-lang-2.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/SimpleDBExample/Jar files/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/SimpleDBExample/Jar files/hsqldb.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/SimpleDBExample/Jar files/jackcess-2.1.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/SimpleDBExample/Jar files/javax.servlet.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/SimpleDBExample/Jar files/jstl.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/SimpleDBExample/Jar files/standard.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/SimpleDBExample/Jar files/ucanaccess-3.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/FinpopGit/Finpop/SimpleDBExample/Jar files/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/FinpopGit/Finpop/SimpleDBExample/Jar files/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/FinpopGit/Finpop/SimpleDBExample/Jar files/hsqldb.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/FinpopGit/Finpop/SimpleDBExample/Jar files/jackcess-2.1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/FinpopGit/Finpop/SimpleDBExample/Jar files/javax.servlet.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/FinpopGit/Finpop/SimpleDBExample/Jar files/jstl.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/FinpopGit/Finpop/SimpleDBExample/Jar files/standard.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/FinpopGit/Finpop/SimpleDBExample/Jar files/ucanaccess-3.0.6.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

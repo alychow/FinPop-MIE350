@@ -1,0 +1,5 @@
+driver=net.ucanaccess.jdbc.UcanaccessDriver
+url=jdbc:ucanaccess://C:/Users/Alexander/ECLIPSE_LUNA/workspace/SimpleDBExample/src/db/FinpopDB.accdb
+user=
+password=
+
