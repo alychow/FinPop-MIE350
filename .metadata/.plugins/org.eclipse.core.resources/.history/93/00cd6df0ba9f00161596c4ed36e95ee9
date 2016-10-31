@@ -1,0 +1,5 @@
+driver=net.ucanaccess.jdbc.UcanaccessDriver
+url=jdbc:ucanaccess:W://src/db/FinpopDB.accdb
+user=
+password=
+
