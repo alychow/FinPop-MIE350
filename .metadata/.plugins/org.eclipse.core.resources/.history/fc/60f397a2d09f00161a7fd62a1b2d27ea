@@ -1,0 +1,35 @@
+#logo {
+	width:250px;
+	height:150px;	
+  	display: block;
+  	margin: 0 auto;
+}
+
+.search_logo {
+	
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+#search_bar {
+	width:400px;
+	display: block;
+  	margin: 10px auto;
+  	outline: none;
+  	padding:5px;
+}
+
+#submit_button {
+	display: block;
+  	margin: 0 auto;
+
+ 	background-color: #555555;
+ 	font-size: 15px;
+ 	color: white;
+    padding: 8px 30px;
+    border-radius: 5px;
+ 	border:none;
+}

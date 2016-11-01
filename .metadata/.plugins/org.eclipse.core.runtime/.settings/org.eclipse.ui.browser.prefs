@@ -1,2 +1,2 @@
 eclipse.preferences.version=1
-internalWebBrowserHistory=http\://localhost\:8080/SimpleDBExample/SearchController|*|http\://localhost\:8080/SimpleDBExample/searchUser.jsp|*|http\://localhost\:8080/SimpleDBExample/|*|http\://localhost\:8080/SimpleDBExample/WEB-INF/classes/db.properties|*|http\://localhost\:8080/SimpleDBExample/about.jsp|*|
+internalWebBrowserHistory=http\://localhost\:8080/SimpleDBExample/searchUser.jsp|*|http\://localhost\:8080/SimpleDBExample/SearchController|*|http\://localhost\:8080/SimpleDBExample/|*|http\://localhost\:8080/SimpleDBExample/UserController?action\=listUser|*|http\://localhost\:8080/SimpleDBExample/WEB-INF/classes/db.properties|*|http\://localhost\:8080/SimpleDBExample/about.jsp|*|
