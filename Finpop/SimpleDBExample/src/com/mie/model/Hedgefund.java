@@ -9,6 +9,7 @@ public class Hedgefund {
 	private String country;
 	private String HQ;
 	private String desc;
+	private Query dao = new Query();
 	
 	public Hedgefund(){
 		this.hedgeName = "";
@@ -57,7 +58,6 @@ public class Hedgefund {
 	}
 	
 	public ArrayList<InvestsIn> compInvestedIn(){
-		Query dao = new Query();
 		return dao.selectHedgeInvestIn(this.hedgeName);
 	}
 	

@@ -7,15 +7,13 @@ import com.mie.dao.*;
 
 public class User {
 	
-	private int userid;
 	private String firstName;
 	private String lastName;
 	private String username;
 	private String password;
-	ArrayList<Portfolio> port = new ArrayList();
+	private Query dao = new Query();
 
-	public User(int userid, String firstName, String lastName, String username, String password){
-		this.setUserid(userid);
+	public User(String firstName, String lastName, String username, String password){
 		this.setFirstName(firstName);
 		this.setLastName(lastName);
 		this.setPassword(password);
@@ -24,18 +22,9 @@ public class User {
 	
 	public User(){
 		this.firstName = "";
-		this.userid = -1;
 		this.lastName = "";
 		this.username = "";
 		this.password = "";
-	}
-	
-	public int getUserid() {
-		return userid;
-	}
-
-	public void setUserid(int userid) {
-		this.userid = userid;
 	}
 
 	public String getFirstName() {
@@ -70,9 +59,10 @@ public class User {
 		this.password = s;
 	}
 	
-	public ArrayList<UserPortfolio> getUserPortfolio(){
-		Query dao = new Query();
-		return dao.selectUserPortfolio(this.userid);
-		
+	public ArrayList<UserPortfolio> getInvestments(){
+		return dao.selectUserPortfolio(this.username);
 	}
+	
+	
+	
 }

@@ -11,6 +11,7 @@ public class Company {
 	private String nation;
 	private double stockPrice;
 	private String desc;
+	private Query dao = new Query();
 	
 	public Company(){
 		this.compName = "";
@@ -69,9 +70,7 @@ public class Company {
 	}
 	
 	public ArrayList<String> getHedgeInvested(){
-		Query dao = new Query();
 		return dao.selectCompHedgeList(this.compName);
-		
 	}
 	
 }

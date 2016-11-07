@@ -3,31 +3,31 @@ package com.mie.model;
 public class Portfolio {
 
 	//Every attribute gets an element
-	private int userID;
+	private String username;
 	private String compName;
 	private String ticker;
 	private int numShares;
 	
 	public Portfolio(){
-		this.userID = -1;
+		this.username = "";
 		this.compName = "";
 		this.ticker = "";
 		this.numShares = -1;
 	}
 	
-	public Portfolio(int userID, String compName, String ticker, int numShares){
+	public Portfolio(String username, String compName, String ticker, int numShares){
 		this.setCompName(compName);
 		this.setNumShares(numShares);
 		this.setTicker(ticker);
-		this.setUserID(userID);
+		this.setUsername(username);
 	}
 	
-	public int getUserID(){
-		return this.userID;
+	public String getUsername(){
+		return this.username;
 	}
 	
-	public void setUserID(int n){
-		this.userID = n;
+	public void setUsername(String s){
+		this.username = s;
 	}
 	
 	public String getCompName(){
