@@ -1,3 +1,9 @@
+#login_button {
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	margin: 10px;
+}
 #logo {
 	width:250px;
 	height:120px;	
@@ -33,3 +39,4 @@
     border-radius: 5px;
  	border:none;
 }
+
