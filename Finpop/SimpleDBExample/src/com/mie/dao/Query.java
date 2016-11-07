@@ -21,9 +21,15 @@ public class Query {
 
 	/* ---------------------------------INSERT QUERIES-----------------------------------*/
 	
+	/* This function inserts a user into the database. It requires that a user is passed to the function with all of its
+	member fields already entered */
+	
 	public String insertUser(User user) {
 		
 		String inserted = new String();
+		
+		
+		/* This is the query string that is ran in access. Note that it is a PreparedStatement becuase of the ?'s */
 		
 		String insertQuery = "INSERT INTO User "
 				+ "(Username,Password,FirstName,LastName) values (?, ?, ?, ?)";
@@ -37,6 +43,9 @@ public class Query {
 			}
 			else{
 				try {
+					/* These objects set the ?'s to the values which are then executed as 
+					a query against the database*/
+					
 					PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
 					preparedStatement.setString(1, user.getUsername());
 					preparedStatement.setString(2, user.getPassword());
@@ -53,10 +62,13 @@ public class Query {
 			
 		}
 		
+		/* Returns a string saying whether or not the user was inserted, or the specific problem that occured
+		as to why they were not inserted */
 		return inserted;
 		
 	}
 	
+	/* This function inserts a portfolio into the portfolio table in the database */
 	public void insertPortfolio(Portfolio port){
 		String insertQuery = "INSERT INTO Portfolio "
 				+ "(Username, CompanyName, Ticker, NumberShares) values (?, ?, ?, ?)";
@@ -76,6 +88,7 @@ public class Query {
 	
 	/* -------------------------------DELETE QUERIES----------------------------*/
 	
+	/* This function deletes the user from the database with the specified username that is passed into the function */
 	public void deleteUser(String username) {
 		
 		String deleteQuery = "DELETE * FROM User WHERE Username='?'";
@@ -109,7 +122,7 @@ public class Query {
 	
 	/*----------------------------UPDATE QUERIES----------------------------------*/
 	
-	
+	/* This function updates the username of the user */
 	public void updateUsername(int oldUsername, String newUsername) {
 		
 		String updateQuery = "UPDATE Users SET Username='?' WHERE Username='?'";
@@ -125,6 +138,7 @@ public class Query {
 		}
 	}
 	
+	/* This function updates the password of the user */
 	public void updatePassword(int username, String newPassword) {
 
 		String updateQuery = "UPDATE Users SET Password='?' WHERE Username='?'";
@@ -140,6 +154,7 @@ public class Query {
 		}
 	}
 	
+	/* This function updates the first name of the user */
 	public void updateFirstName(int username, String newName) {
 
 		String updateQuery = "UPDATE Users SET FirstName='?' WHERE Username='?'";
@@ -155,6 +170,7 @@ public class Query {
 		}
 	}
 	
+	/* This function updates the last name of the user */
 	public void updateLastName(int username, String newName) {
 
 		String updateQuery = "UPDATE Users SET LastName='?' WHERE Username=?";
