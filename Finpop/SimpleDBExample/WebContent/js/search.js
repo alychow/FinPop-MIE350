@@ -23,8 +23,5 @@ $("#search_form").on('keyup', function (e) {
 	      source: list
 	    });
   });
-	}
-	else {
-		$( "#result" ).empty();	
-	}
+ }
 });
