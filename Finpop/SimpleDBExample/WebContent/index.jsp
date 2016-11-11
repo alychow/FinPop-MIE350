@@ -1,29 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+
 <link rel="stylesheet" type="text/css" href="style/theme.css">
+<link rel="stylesheet" type="text/css" href="style/search.css">
 
-<title>MIE350 Sample Database Web App</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+<title>MIE350 Sample DB Web App</title>
 </head>
 <body>
-	<%@ include file="navbar.jsp"%>
+		<a id="login_button" href="">Login</a>
 
+<%-- 	<%@ include file="navbar.jsp"%>.
+ --%>	
+ <div class="search_logo">
+	<img id="logo" src="img/logo.png"></img>
+	
 	<div class="container">
-
-		Welcome!<br>
-		<br> In this project, your team will design and build a web
-		application. A web application is a software application that is
-		accessed over the Internet using standard browsers (e.g. Internet
-		Explorer, Mozilla Firefox). Examples of web application would be
-		online-shopping, web banking, stock exchange and many others. Each
-		member of the team is expected to contribute equally to the project
-		though there may be a variety of different roles.
-
+			<form id="search_form" method="POST" action='SearchController' name="frmAddUser">
+				<input id="search_bar" type="text" name="keyword"
+					value="" placeholder="Search Company or Ticker">
+					<input id="submit_button" type="submit" value="Search" />
+			</form>
+		</div>
 	</div>
-	<%@ include file="footer.jsp"%>
+	
 </body>
+      <script src="js/search.js"></script>
+
+
 </html>
