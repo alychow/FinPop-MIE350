@@ -8,13 +8,13 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/ValarMorghulis/Desktop/Eclipse Luna/ExternalJar/commons-lang-2.6.jar"/>
-	<classpathentry kind="lib" path="/Users/ValarMorghulis/Desktop/Eclipse Luna/ExternalJar/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="/Users/ValarMorghulis/Desktop/Eclipse Luna/ExternalJar/jackcess-2.1.3.jar"/>
-	<classpathentry kind="lib" path="/Users/ValarMorghulis/Desktop/Eclipse Luna/ExternalJar/javax.servlet.jar"/>
-	<classpathentry kind="lib" path="/Users/ValarMorghulis/Desktop/Eclipse Luna/ExternalJar/jstl.jar"/>
-	<classpathentry kind="lib" path="/Users/ValarMorghulis/Desktop/Eclipse Luna/ExternalJar/standard.jar"/>
-	<classpathentry kind="lib" path="/Users/ValarMorghulis/Desktop/Eclipse Luna/ExternalJar/ucanaccess-3.0.6.jar"/>
-	<classpathentry kind="lib" path="/Users/ValarMorghulis/Desktop/Eclipse Luna/ExternalJar/hsqldb.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/External JARs/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/External JARs/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/External JARs/hsqldb.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/External JARs/jackcess-2.1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/External JARs/javax.servlet.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/External JARs/jstl.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/External JARs/standard.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alexander/ECLIPSE_LUNA/workspace/External JARs/ucanaccess-3.0.6.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

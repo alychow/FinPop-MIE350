@@ -45,7 +45,7 @@ public class SearchController extends HttpServlet {
 		
 		Query dao = new Query();
 		
-		ArrayList<String> searchResults = dao.selectSuggested(word);
+		ArrayList<String> searchResults = dao.selectSuggestedResults(word);
 		
 		for(int i = 0; i < searchResults.size(); i++){
 			out.write(searchResults.get(i)+ "|");

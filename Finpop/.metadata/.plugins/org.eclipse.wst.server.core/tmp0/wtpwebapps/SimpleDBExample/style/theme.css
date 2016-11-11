@@ -8,10 +8,7 @@ body {
 * Container for body text
 */
 .container {
-	width: 70%;
 	margin: auto;
-	padding: 30px;
-	border: 1px solid #666;
 	background: #ffffff;
 }
 
@@ -19,7 +16,6 @@ body {
 	width: 70%;
 	margin: auto;
 	padding: 10px;
-	border: 0px solid #666;
 	background: #ffffff;
 }
 
