@@ -14,7 +14,7 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<title>MIE350 Sample DB Web App</title>
+<title>FinPOP</title>
 </head>
 <body>
 		<a id="login_button" href="">Login</a>
@@ -25,11 +25,12 @@
 	<img id="logo" src="img/logo.png"></img>
 	
 	<div class="container">
-			<form id="search_form" method="POST" action='SearchController' name="frmAddUser">
+			<form id="search_form" method="POST" action='SearchController' name="DynamicSearch">
 				<input id="search_bar" type="text" name="keyword"
 					value="" placeholder="Search Company or Ticker">
 					<input id="submit_button" type="submit" value="Search" />
 			</form>
+			
 		</div>
 	</div>
 	
