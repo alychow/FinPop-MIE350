@@ -1,3 +1,9 @@
+#login_button {
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	margin: 10px;
+}
 #logo {
 	width:250px;
 	height:120px;	
@@ -26,10 +32,15 @@
 	display: block;
   	margin: 0 auto;
 
- 	background-color: #555555;
+ 	background-color: #265a3e;
  	font-size: 15px;
  	color: white;
     padding: 8px 30px;
     border-radius: 5px;
  	border:none;
 }
+
+.ui-menu .ui-menu-item{
+    font-size:10px;
+}
+
