@@ -47,10 +47,11 @@ public class SearchController extends HttpServlet {
 		
 		ArrayList<String> searchResults = dao.selectSuggestedResults(word);
 		
-		for(int i = 0; i < searchResults.size(); i++){
+		int i = 0;
+		for( ; i < searchResults.size()-1; i++){
 			out.write(searchResults.get(i)+ "|");
 		}
-		
+		out.write(searchResults.get(i));
 		out.close();
 	}
 	
