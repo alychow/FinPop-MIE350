@@ -7,7 +7,7 @@
 		<li><a href="about.jsp">About</a></li>
 		<li><a href="/SimpleDBExample/UserController?action=listUser" />Users
 			in DB</a></li>
-		<li><a href="searchUser.jsp">Search A User</a></li>
+		<li><a href="search.jsp">Search A User</a></li>
 		<li><a href="helpful_links.jsp">Other Links</a>
 			<ul id="nav">
 				<li><a href="sample_html.jsp">Sample HTML Tags</a></li>
