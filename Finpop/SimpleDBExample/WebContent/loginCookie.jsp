@@ -6,6 +6,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <title>Login Session</title>
 </head>
 <body>
@@ -51,11 +53,32 @@
 			Cookie cookie = new Cookie("loginCookie", username);
 			// add cookie back into repsonse header
 			response.addCookie(cookie);
-			out.print("Login Successful. Welcome back " + username);
-			out.print("<br/><a href='listUsers.jsp'>List Users</a><br/>");
-		} else {
+			out.print("Login Successful. Welcome back " + username+" you will be redirected in 2 seconds");
+			%>
+			<script>
+				$(document).ready(function () {
+				    // Handler for .ready() called.
+				    window.setTimeout(function () {
+				        location.href = "search.jsp";
+				    }, 2000);
+				});
+			</script>
+			<%
+			
+/* 			out.print("<br/><a href='listUsers.jsp'>List Users</a><br/>");
+ */		} else {
 			// login failed
 			out.print("Login Unsuccessful. Please go back and try again");
+			%>
+			<script>
+				$(document).ready(function () {
+				    // Handler for .ready() called.
+				    window.setTimeout(function () {
+				        location.href = "index.jsp";
+				    }, 2000);
+				});
+			</script>
+			<%
 		}
 	} else {	
 		// a value was laready stored in the session
@@ -66,8 +89,6 @@
 	}
 %>
 
-
-
-
 </body>
+
 </html>

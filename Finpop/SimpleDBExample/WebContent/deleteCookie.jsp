@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Delete Cookie</title>
+<title>Logout</title>
 </head>
 <body>
 
@@ -28,9 +28,9 @@
 		response.addCookie(cookie);
 		%>
 	
-	Cookie Deleted. <br/><br/>
+	You have been logged out <br/><br/>
 	
-	Go back to the <a href="login.jsp">login page</a>.</br>
+	Go back to the <a href="index.jsp">login page</a>.</br>
 
 
 </body>

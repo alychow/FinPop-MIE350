@@ -1,5 +1,5 @@
 <div>
-
+<h3>Create New User</h3>
 <form action="UserController" method="get"> 	
 	<table border=1>
 	
@@ -14,10 +14,11 @@
 	
 	<tbody>
 		<tr>
-			<td><input type="text" name="firstname"></td>
-			<td><input type="text" name="lastname"></td>
 			<td><input type="text" name="username"></td>
 			<td><input type="text" name="password"></td>
+			<td><input type="text" name="firstname"></td>
+			<td><input type="text" name="lastname"></td>
+			
 		</tr>
 	</tbody>
 		

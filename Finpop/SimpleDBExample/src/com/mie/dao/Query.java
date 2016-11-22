@@ -398,8 +398,7 @@ public class Query {
 		try{
 			Statement stat = connection.createStatement();
 			ResultSet rs = stat.executeQuery(nameQuery);
-			rs.next();
-			if(!rs.wasNull()){
+			if(rs.isBeforeFirst()){
 				//Username already exists!
 				nameExists = true;
 			}
@@ -435,8 +434,7 @@ public class Query {
 			Statement stat = connection.createStatement();
 			ResultSet rs = stat.executeQuery(usernameExistsQuery);
 			
-			rs.next();
-			if(rs.wasNull()){
+			if(!rs.isBeforeFirst()){
 				//Please enter a valid username
 				correct = false;
 			}
