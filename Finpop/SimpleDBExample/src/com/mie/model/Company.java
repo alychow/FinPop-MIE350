@@ -69,7 +69,7 @@ public class Company {
 		this.desc = s;
 	}
 	
-	public ArrayList<String> getHedgeInvested(){
+	public ArrayList<Hedgefund> getHedgeInvested(){
 		return dao.selectCompHedgeList(this.compName);
 	}
 	

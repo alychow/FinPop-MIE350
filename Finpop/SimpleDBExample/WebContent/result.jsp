@@ -18,8 +18,12 @@
 
 		
 	<div>
-		
+			<br>
 			<div><c:out value="${company.getDesc()}" /></div>
+			<h4>Hedgefunds that are currently invested in <c:out value="${company.getCompName()}"/> as of <%=new java.util.Date()%></h4>
+			<c:forEach items="${hedgeList}" var="hedgeFund">
+						<div><c:out value="${hedgeFund.getHedgeName()}" /></div>
+			</c:forEach>
 			
 	</div>
 		<div id="search_results" >The following Companies match your search keyword "<b><%=request.getAttribute("keyword")%></b>":<div>

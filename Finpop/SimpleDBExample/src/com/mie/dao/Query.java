@@ -203,7 +203,8 @@ public class Query {
 	public Company selectCompany (String search){
 		Company comp = new Company();
 		search = "'" + search + "'";
-		String searchQuery = "SELECT CompanyName,Ticker,Nationality,StockPrice,Description FROM Company WHERE CompanyName = " + search;
+		String searchQuery = "SELECT CompanyName,Ticker,Nationality,StockPrice,Description FROM Company WHERE CompanyName = " + search+" "
+				+ "OR Ticker = "+search;
 		
 		try{
 			Statement stat = connection.createStatement();
@@ -223,18 +224,45 @@ public class Query {
 		
 	}
 	
+	//Returns the hedgefund object that was searched
+	public Hedgefund selectHedgefund (String search){
+			Hedgefund hedge = new Hedgefund();
+			search = "'" + search + "'";
+			String searchQuery = "SELECT HedgefundName,Country,Headquarters,Description FROM Hedgefund WHERE HedgefundName = " + search;
+			
+			try{
+				Statement stat = connection.createStatement();
+				ResultSet rs = stat.executeQuery(searchQuery);
+				rs.next();
+				hedge.setHedgeName(rs.getString(1));
+				hedge.setCountry(rs.getString(2));
+				hedge.setHQ(rs.getString(3));
+				hedge.setDesc(rs.getString(4));
+			}
+			catch(SQLException e){
+				e.printStackTrace();
+			}
+			
+			return hedge;
+			
+		}
+	
 	//Gets the list of hedgefunds that are invested in that company
-	public ArrayList<String> selectCompHedgeList(String comp){
-		
-		comp = "'" + comp + "'";
-		ArrayList<String> hedgeList = new ArrayList<String>();
-		String searchQuery = "SELECT HedgefundName FROM InvestsIn WHERE CompanyName = " + comp;
+	public ArrayList<Hedgefund> selectCompHedgeList(String compOrTicker){
+		compOrTicker = "'"+compOrTicker+"'";
+		String hedgeFundName = "";
+		ArrayList<Hedgefund> hedgeList = new ArrayList<Hedgefund>();
+		String searchQuery = "SELECT I.HedgefundName FROM InvestsIn I INNER JOIN Company C ON I.CompanyName = C.CompanyName"
+				+ " WHERE I.CompanyName = " + compOrTicker + " OR C.Ticker = " + compOrTicker;
 		
 		try{
 			Statement stat = connection.createStatement();
 			ResultSet rs = stat.executeQuery(searchQuery);
 			while(rs.next()){
-				hedgeList.add(rs.getString("HedgefundName"));
+				hedgeFundName = rs.getString("HedgefundName");
+				Hedgefund hedgefund = new Hedgefund();
+				hedgefund.setHedgeName(hedgeFundName);
+				hedgeList.add(hedgefund);
 			}
 		}
 		catch(SQLException e){
@@ -248,7 +276,6 @@ public class Query {
 	//Gets the list of companies that that hedgefund is invested in
 	public ArrayList<InvestsIn> selectHedgeInvestIn(String hedgeName){
 		ArrayList<InvestsIn> compList = new ArrayList<InvestsIn>();
-		InvestsIn inv = new InvestsIn();
 		hedgeName = "'" + hedgeName + "'";
 		String searchQuery = "SELECT I.CompanyName, I.Ticker, I.SharesOwned "
 				+ "FROM InvestsIn I WHERE I.HedgefundName = " + hedgeName;
@@ -257,6 +284,7 @@ public class Query {
 			Statement stat = connection.createStatement();
 			ResultSet rs = stat.executeQuery(searchQuery);
 			while(rs.next()){
+				InvestsIn inv = new InvestsIn();
 				inv.setCompanyName(rs.getString("CompanyName"));
 				inv.setTicker(rs.getString("Ticker"));
 				inv.setSharesOwned(rs.getInt("SharesOwned"));
@@ -310,14 +338,13 @@ public class Query {
 	public boolean isCompany(String compName){
 		boolean exists = true;
 		compName = "'" + compName + "'";
-		String searchQuery = "SELECT * FROM Company WHERE CompanyName = " + compName;
+		String searchQuery = "SELECT CompanyName FROM Company WHERE CompanyName = " + compName;
 		
 		try{
 			Statement stat = connection.createStatement();
 			ResultSet rs = stat.executeQuery(searchQuery);
-			rs.next();
-			if(rs.wasNull()) exists = false;
-		}
+			if(!rs.isBeforeFirst()) exists = false;
+			}
 		catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -329,14 +356,14 @@ public class Query {
 	public boolean isTicker(String ticker){
 		boolean exists = true;
 		ticker = "'" + ticker + "'";
-		String searchQuery = "SELECT * FROM Company WHERE Ticker = " + ticker;
+		String searchQuery = "SELECT CompanyName FROM Company WHERE Ticker = " + ticker;
 		
 		try{
 			Statement stat = connection.createStatement();
 			ResultSet rs = stat.executeQuery(searchQuery);
-			rs.next();
-			if(rs.wasNull()) exists = false;
-		}
+			
+			if(!rs.isBeforeFirst()) exists = false;
+			}
 		catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -348,13 +375,12 @@ public class Query {
 	public boolean isHedgefund(String hedgeName){
 		boolean exists = true;
 		hedgeName = "'" + hedgeName + "'";
-		String searchQuery = "SELECT * FROM Hedgefund WHERE HedgefundName = " + hedgeName;
+		String searchQuery = "SELECT HedgefundName FROM Hedgefund WHERE HedgefundName = " + hedgeName;
 		
 		try{
 			Statement stat = connection.createStatement();
 			ResultSet rs = stat.executeQuery(searchQuery);
-			rs.next();
-			if(rs.wasNull()) exists = false;
+			if(!rs.isBeforeFirst()) exists = false;
 		}
 		catch(SQLException e){
 			e.printStackTrace();
