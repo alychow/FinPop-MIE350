@@ -15,8 +15,8 @@
 <title>MIE350 Sample DB Web App: Add/Update A User</title>
 </head>
 <body>
-	<%@ include file="navbar.jsp"%>.
-
+<%-- 	<%@ include file="navbar.jsp"%>.
+ --%>
 	<div class="container">
 		<center>
 			<h1>Add/Update A User</h1>

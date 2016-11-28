@@ -7,57 +7,76 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<link rel="stylesheet" type="text/css" href="style/theme.css">
+<link rel="stylesheet" type="text/css" href="style/results.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<title>MIE350 Sample DB Web App</title>
+
+<title>FinPOP</title>
 </head>
 <body>
+<% String login = request.getParameter("login"); 
+	
+		Cookie[] cookies = request.getCookies();
 
-	<%@ include file="navbar.jsp"%>
-	<center>
-		<h1>Show All Users</h1>
-	</center>
-	<div class="container-noborder">
+		// Check if the user logged in is the same as the one being viewed
+		String storedLogin = null;
+		for(Cookie cookie : cookies){
+		    if("loginCookie".equals(cookie.getName())){
+		        storedLogin = cookie.getValue();
+		    }
+		}
+		if (storedLogin!=(null)){
 
-		<%
-			String name = request.getParameter("firstName");
-			session.setAttribute("session_name", name);
-		%>
+			%>
+			<div id="container">
+				<a href="search.jsp"><img id="logo" src="img/logo.png"></img></a>
+				<form id="search_form" method="POST" action='SearchController' name="DynamicSearch">
+					<input id="search_bar" type="text" name="keyword"
+						value="" placeholder="Hi <%out.print(storedLogin);%> search Company or Hedgefund">
+						<input id="submit_button" type="submit" value="Search" />
+				</form>	
+					<div id="menu"><a href="PortfolioController?action=listPortfolio&userId=<%out.print(storedLogin);%>"><%out.print(storedLogin);%>'s Portfolio</a>
+					<a href="deleteCookie.jsp">Logout</a></div>
+			</div>
 
-		Hello
-		<%out.print(session.getAttribute("session_name"));%>!<br>
-		<br> The time is now <b><%=new java.util.Date()%></b>.<br> <br>
-		The following users are in your database: <br> <br> <a
-			href="UserController?action=insert">Add A New User</a> <br> <br>
-		<table border=1>
+	<div class="page">
+		<h1 style="text-align:center;"><%out.print(storedLogin); %>'s Portfolio</h1>
+
+		<table class="result_table">
 			<thead>
 				<tr>
-					<th>User Id</th>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>DOB</th>
-					<th>Email</th>
-					<th colspan=2>Action</th>
+					<th>Company Name</th>
+					<th>Stock Price</th>
+					<th>Number of Shares</th>
+					<th>Total Money</th>
+					<th colspan=2></th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${users}" var="user">
+				<c:forEach items="${portfolio}" var="portfolio">
 					<tr>
-						<td align="center"><c:out value="${user.getUserid()}" /></td>
-						<td align="center"><c:out value="${user.getFirstName()}" /></td>
-						<td align="center"><c:out value="${user.getLastName()}" /></td>
-						<td align="center"><fmt:formatDate pattern="yyyy-MMM-dd"
-								value="${user.getDob()}" /></td>
-						<td align="center"><c:out value="${user.getEmail()}" /></td>
+						<td align="center"><c:out value="${portfolio.getCompName()}" /></td>
+						<td align="center"><c:out value="${portfolio.getStockPrice()}" /></td>
+						<td align="center"><c:out value="${portfolio.getNumShares()}" /></td>
+						<td align="center"><c:out value="${portfolio.getTotalMoney()}" /></td>
+						<td align="center"><input id="update_value"></input><a
+							href="PortfolioController?action=updateCompany&userId=<%out.print(storedLogin); %>&compName=<c:out value="${portfolio.getCompName()}"/>">Update</a></td>
 						<td align="center"><a
-							href="UserController?action=edit&userId=<c:out value="${user.getUserid()}"/>">Update</a></td>
-						<td align="center"><a
-							href="UserController?action=delete&userId=<c:out value="${user.getUserid()}"/>">Delete</a></td>
+							href="PortfolioController?action=deleteCompany&userId=<%out.print(storedLogin); %>&compName=<c:out value="${portfolio.getCompName()}"/>">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
-	<%@ include file="footer.jsp"%>
 </body>
+      <script src="js/search.js"></script>
+
+<%
+		} else {
+			%><a id="login_button" href="index.jsp">Login</a><%
+			out.print("You are NOT allowed to view private data for " + login + ".");
+		}
+	%>
 </html>

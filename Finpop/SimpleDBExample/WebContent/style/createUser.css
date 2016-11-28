@@ -1,0 +1,31 @@
+#back-button {
+	margin-left:10px;
+	width:30px;
+}
+
+#new-user {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  margin: -100px 0 0 -150px;
+  text-align:center;
+ }
+
+ #user-profile-photo{
+ 	width:100px;
+ }
+ 
+ #create-user {
+ display: block;
+  	margin: 0 auto;
+
+ 	background-color: #265a3e;
+ 	font-size: 15px;
+ 	color: white;
+    padding: 8px 30px;
+    border-radius: 5px;
+ 	border:none;
+ }

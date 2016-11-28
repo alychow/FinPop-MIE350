@@ -21,9 +21,15 @@ public class Query {
 
 	/* ---------------------------------INSERT QUERIES-----------------------------------*/
 	
+	/* This function inserts a user into the database. It requires that a user is passed to the function with all of its
+	member fields already entered */
+	
 	public String insertUser(User user) {
 		
 		String inserted = new String();
+		
+		
+		/* This is the query string that is ran in access. Note that it is a PreparedStatement becuase of the ?'s */
 		
 		String insertQuery = "INSERT INTO User "
 				+ "(Username,Password,FirstName,LastName) values (?, ?, ?, ?)";
@@ -37,6 +43,9 @@ public class Query {
 			}
 			else{
 				try {
+					/* These objects set the ?'s to the values which are then executed as 
+					a query against the database*/
+					
 					PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
 					preparedStatement.setString(1, user.getUsername());
 					preparedStatement.setString(2, user.getPassword());
@@ -53,11 +62,15 @@ public class Query {
 			
 		}
 		
+		/* Returns a string saying whether or not the user was inserted, or the specific problem that occured
+		as to why they were not inserted */
 		return inserted;
 		
 	}
 	
-	public void insertPortfolio(Portfolio port){
+	/* This function inserts a portfolio into the portfolio table in the database */
+	public boolean insertPortfolio(Portfolio port){
+		boolean inserted = true;
 		String insertQuery = "INSERT INTO Portfolio "
 				+ "(Username, CompanyName, Ticker, NumberShares) values (?, ?, ?, ?)";
 		
@@ -67,15 +80,18 @@ public class Query {
 			ps.setString(2, port.getCompName());
 			ps.setString(3, port.getTicker());
 			ps.setInt(4, port.getNumShares());
-			ps.executeUpdate(insertQuery);	
+			ps.executeUpdate();	
 		}
 		catch(SQLException e){
+			inserted = false;
 			e.printStackTrace();
 		}
+		return inserted;
 	}
 	
 	/* -------------------------------DELETE QUERIES----------------------------*/
 	
+	/* This function deletes the user from the database with the specified username that is passed into the function */
 	public void deleteUser(String username) {
 		
 		String deleteQuery = "DELETE * FROM User WHERE Username='?'";
@@ -92,6 +108,20 @@ public class Query {
 		}
 	}
 	
+	public void deleteCompFromPortfolio(String compName,String username){
+		username = "'" + username + "'";
+		compName = "'" + compName + "'";
+		String deleteQuery = "DELETE * FROM Portfolio WHERE Username = " + username + " AND CompanyName = " + compName;
+		try{
+			Statement stat = connection.createStatement();
+			stat.execute(deleteQuery);
+			
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+	}
+	
 	public void deletePortfolio(String username){
 		username = "'" + username + "'";
 		String deleteQuery = "DELETE * FROM Portfolio WHERE Username = " + username;
@@ -104,12 +134,11 @@ public class Query {
 			e.printStackTrace();
 		}
 	}
-
 	
 	
 	/*----------------------------UPDATE QUERIES----------------------------------*/
 	
-	
+	/* This function updates the username of the user */
 	public void updateUsername(int oldUsername, String newUsername) {
 		
 		String updateQuery = "UPDATE Users SET Username='?' WHERE Username='?'";
@@ -125,6 +154,7 @@ public class Query {
 		}
 	}
 	
+	/* This function updates the password of the user */
 	public void updatePassword(int username, String newPassword) {
 
 		String updateQuery = "UPDATE Users SET Password='?' WHERE Username='?'";
@@ -140,6 +170,7 @@ public class Query {
 		}
 	}
 	
+	/* This function updates the first name of the user */
 	public void updateFirstName(int username, String newName) {
 
 		String updateQuery = "UPDATE Users SET FirstName='?' WHERE Username='?'";
@@ -155,6 +186,7 @@ public class Query {
 		}
 	}
 	
+	/* This function updates the last name of the user */
 	public void updateLastName(int username, String newName) {
 
 		String updateQuery = "UPDATE Users SET LastName='?' WHERE Username=?";
@@ -163,6 +195,21 @@ public class Query {
 			PreparedStatement ps = connection.prepareStatement(updateQuery);
 			ps.setString(1, newName);
 			ps.setInt(2, username);
+			ps.executeUpdate(updateQuery);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateCompFromPortfolio(String compName, int value, String username){
+		String updateQuery = "UPDATE Portfolio SET NumberShares=? WHERE Username=? AND CompanyName=?";
+
+		try {
+			PreparedStatement ps = connection.prepareStatement(updateQuery);
+			ps.setInt(1, value);
+			ps.setString(2, username);
+			ps.setString(3, compName);
 			ps.executeUpdate(updateQuery);
 
 		} catch (SQLException e) {
@@ -310,12 +357,12 @@ public class Query {
 				+ "WHERE P.Username = " + username;
 		
 		ArrayList<UserPortfolio> investments = new ArrayList<UserPortfolio>();
-		UserPortfolio investment = new UserPortfolio();
 		
 		try{
 			Statement stat = connection.createStatement();
 			ResultSet rs = stat.executeQuery(searchQuery);
 			while(rs.next()){
+				UserPortfolio investment = new UserPortfolio();
 				investment.setCompName(rs.getString("CompanyName"));
 				investment.setNumShares(rs.getInt("NumberShares"));
 				investment.setStockPrice(rs.getDouble("StockPrice"));

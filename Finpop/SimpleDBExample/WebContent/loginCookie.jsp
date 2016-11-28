@@ -83,7 +83,8 @@
 	} else {	
 		// a value was laready stored in the session
 		// a user is already logged in 
-		out.print("Someone is already logged in as " + storedLogin);
+		out.print("Someone is already logged in as " + storedLogin+"<br/>");
+		out.print("<a href='search.jsp'>Continue as current user</a><br/>");
 		out.print("<br/>Sorry, need to logoff first. <br/>");
 		out.print("<a href='deleteCookie.jsp'>Log off</a><br/>");
 	}

@@ -1,20 +1,12 @@
-<nav>
-	<center>
-		<h1>MIE350 Sample Database Web App</h1>
-	</center>
-	<ul id="nav">
-		<li><a href="index.jsp">Home</a></li>
-		<li><a href="about.jsp">About</a></li>
-		<li><a href="/SimpleDBExample/UserController?action=listUser" />Users
-			in DB</a></li>
-		<li><a href="search.jsp">Search A User</a></li>
-		<li><a href="helpful_links.jsp">Other Links</a>
-			<ul id="nav">
-				<li><a href="sample_html.jsp">Sample HTML Tags</a></li>
-				<li><a href="http://www.w3schools.com/html/default.asp">HTML Tutorial</a></li>
-				<li><a href="http://www.w3schools.com/bootstrap/">BootStrap CSS Tutorial</a></li>
-			</ul></li>
-			<li><a href="contact.jsp">Contact</a></li>
-			<li><a href="TEST.jsp">INSERT</a></li>
-	</ul>
-</nav>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

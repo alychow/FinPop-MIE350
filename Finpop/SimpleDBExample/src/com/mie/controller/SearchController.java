@@ -24,7 +24,7 @@ public class SearchController extends HttpServlet {
 	private static String INSERT_OR_EDIT = "/user.jsp";
 	private static String LIST_USER = "/listUser.jsp";
 	private static String SEARCH_COMPANY = "/result.jsp";
-	private static String SEARCH_HEDGE = "/Hedgeresult.jsp";
+	private static String SEARCH_HEDGE = "/HedgeResult.jsp";
 
 	
 	public SearchController() {
@@ -80,7 +80,8 @@ public class SearchController extends HttpServlet {
 			}
 			else{
 				PrintWriter out = res.getWriter();
-				out.write("FUCK OFF");
+				out.write("Sorry no results were found");
+				
 			}
 			
 			

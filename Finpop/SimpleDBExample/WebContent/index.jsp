@@ -4,23 +4,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login Form</title>
+<link rel="stylesheet" type="text/css" href="style/login.css">
+
+<title>Login</title>
 </head>
 <body>
 
-
-	<h2>FinPOP Login Page</h2>
-	
-	<h3>Login</h3>
-	<form action="loginCookie.jsp" method="post">
-		Login: <input type="text" name="loginParameter" />
+<div id="login">
+	<img id="login-logo" src="img/logo.png"></img>	
+	<form id="login-form" action="loginCookie.jsp" method="post">
+		<label>Username:</label> <br/><input type="text" name="loginParameter" />
+		<br/>		<br/>
+		
+		<label>Password:</label> <br/><input type="text" name="pswdParameter" />
 		<br/>
-		Password: <input type="text" name="pswdParameter" />
-		<br />
-		<input type="submit" />
+				<br/>
+		
+		<input id="login-button" type="submit" value="Login" />
 		
 	</form>
-	
+	<a href="createUser.jsp">Sign Up</a>
+	</div>
 
 </body>
 </html>

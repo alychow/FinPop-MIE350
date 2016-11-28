@@ -1,6 +1,86 @@
+body {
+	margin:0;
+}
+
+#container {
+	display:flex;
+	border-bottom: 1px solid;
+	border-bottom-color: rgba(70, 63, 63, 0.4);
+	width: 100%;
+    padding:0px;
+    margin:0px;
+    padding-top: 8px;
+    line-height: 40px;
+    background-color:white;
+    position:fixed;
+}
+
 #search_results {
 	font-style: italic;
 	padding: 10px;
+	margin-left:10px;
 	font-size:11px;
 	color:rgba(8, 8, 8, 0.64);
+}
+input#submit_button{
+  	margin: 0 auto;
+
+ 	background-color: #265a3e;
+ 	font-size: 10px;
+ 	color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+ 	border:none;
+}
+#menu {
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	margin: 10px 30px;
+}
+#menu a {
+	margin-left:10px;
+	color: #000000;
+    text-decoration: none;
+}
+
+#logo{
+	width:130px;
+	height:40px;
+	margin-left:20px;
+	margin-right:20px;
+}
+input#search_bar{
+	width:300px;
+	padding: 5px;
+}
+
+.page {
+    padding-top: 40px;
+}
+.hedgefund,.company{
+	margin-left:20px;
+	margin-right:20px;
+	
+	padding-left:30px;
+	padding-right:30px;
+	
+}
+
+.table_title{
+	text-align: center;
+}
+
+.result_table{
+	width:100%;
+	table-layout:fixed;
+}
+
+#hedgeInvests{
+	text-align:center;
+}
+
+#update_value {
+	width:50px;
+	margin-right:10px;
 }

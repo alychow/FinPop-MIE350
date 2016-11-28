@@ -4,9 +4,9 @@ $("#search_form").on('keyup', function (e) {
 	 var Value = document.getElementById("search_bar");
      var s = Value.value;
      console.log(s);
-
-     if(s!=""){
-		event.preventDefault();
+     
+     if(s != " "){
+    	 event.preventDefault();
 		
   // Get some values from elements on the page:
 	var $form = $( this ),
@@ -24,9 +24,5 @@ $("#search_form").on('keyup', function (e) {
 	      source: list
 	  });
   });
- }
-});
-
-function Search(){
-	
 }
+});

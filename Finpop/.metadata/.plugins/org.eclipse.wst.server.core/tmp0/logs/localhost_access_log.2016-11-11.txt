@@ -1,0 +1,10 @@
+127.0.0.1 - - [11/Nov/2016:14:08:16 -0500] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [11/Nov/2016:14:08:20 -0500] "GET /SimpleDBExample/ HTTP/1.1" 200 1800
+0:0:0:0:0:0:0:1 - - [11/Nov/2016:14:08:20 -0500] "GET /SimpleDBExample/style/theme.css HTTP/1.1" 200 2202
+0:0:0:0:0:0:0:1 - - [11/Nov/2016:14:08:30 -0500] "GET /SimpleDBExample/searchUser.jsp HTTP/1.1" 200 991
+0:0:0:0:0:0:0:1 - - [11/Nov/2016:14:08:30 -0500] "GET /SimpleDBExample/css/ui-lightness/jquery-ui-1.8.18.custom.css HTTP/1.1" 404 1071
+0:0:0:0:0:0:0:1 - - [11/Nov/2016:14:08:30 -0500] "GET /SimpleDBExample/style/search.css HTTP/1.1" 200 501
+0:0:0:0:0:0:0:1 - - [11/Nov/2016:14:08:30 -0500] "GET /SimpleDBExample/js/jquery-1.7.1.min.js HTTP/1.1" 404 1027
+0:0:0:0:0:0:0:1 - - [11/Nov/2016:14:08:30 -0500] "GET /SimpleDBExample/js/jquery-ui-1.8.18.custom.min.js HTTP/1.1" 404 1049
+0:0:0:0:0:0:0:1 - - [11/Nov/2016:14:08:30 -0500] "GET /SimpleDBExample/img/logo.png HTTP/1.1" 200 13480
+0:0:0:0:0:0:0:1 - - [11/Nov/2016:14:09:00 -0500] "POST /SimpleDBExample/SearchController HTTP/1.1" 500 1501

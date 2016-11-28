@@ -16,10 +16,6 @@
 
 <title>FinPOP</title>
 </head>
-<body>
-
-<%-- 	<%@ include file="navbar.jsp"%>.
- --%>	
  <% String login = request.getParameter("login"); 
 	
 		Cookie[] cookies = request.getCookies();
@@ -34,7 +30,9 @@
 		if (storedLogin!=(null)){
 
 			%>
-					<a id="login_button" href="deleteCookie.jsp">Logout</a>
+					<div id="menu"><a href="PortfolioController?action=listPortfolio&userId=<%out.print(storedLogin);%>"><%out.print(storedLogin);%>'s Portfolio</a>
+					<a href="deleteCookie.jsp">Logout</a></div>
+<body>
 			
  <div class="search_logo">
 	<img id="logo" src="img/logo.png"></img>
