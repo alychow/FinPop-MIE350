@@ -203,14 +203,16 @@ public class Query {
 	}
 	
 	public void updateCompFromPortfolio(String compName, int value, String username){
-		String updateQuery = "UPDATE Portfolio SET NumberShares=? WHERE Username=? AND CompanyName=?";
+		
+		username = "'"+username+"'";
+		compName = "'"+compName+"'";
+		
+		String updateQuery = "UPDATE Portfolio SET NumberShares=" + value + " WHERE Username= " + username + 
+				" AND CompanyName=" + compName;
 
 		try {
-			PreparedStatement ps = connection.prepareStatement(updateQuery);
-			ps.setInt(1, value);
-			ps.setString(2, username);
-			ps.setString(3, compName);
-			ps.executeUpdate(updateQuery);
+			Statement stat = connection.createStatement();
+			stat.executeUpdate(updateQuery);
 
 		} catch (SQLException e) {
 			e.printStackTrace();

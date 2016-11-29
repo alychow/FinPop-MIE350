@@ -32,7 +32,7 @@
 				<a href="search.jsp"><img id="logo" src="img/logo.png"></img></a>
 				<form id="search_form" method="POST" action='SearchController' name="DynamicSearch">
 					<input id="search_bar" type="text" name="keyword"
-						value="" placeholder="Hi <%out.print(storedLogin);%> search Company or Hedgefund">
+						value="" placeholder="Search Company or Hedgefund">
 						<input id="submit_button" type="submit" value="Search" />
 				</form>	
 					<div id="menu"><a href="PortfolioController?action=listPortfolio&userId=<%out.print(storedLogin);%>"><%out.print(storedLogin);%>'s Portfolio</a>

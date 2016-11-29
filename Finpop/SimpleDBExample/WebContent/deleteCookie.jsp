@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <title>Logout</title>
 </head>
 <body>
@@ -28,9 +30,17 @@
 		response.addCookie(cookie);
 		%>
 	
-	You have been logged out <br/><br/>
+	<div style="text-align:center;margin-top:50px;">You have been logged out <br/><br/>
 	
-	Go back to the <a href="index.jsp">login page</a>.</br>
+	You will be redirected to the login page in a few seconds.</br><img src="img/squares.gif" style="width:50px"/></div>
+		<script>
+				$(document).ready(function () {
+				    // Handler for .ready() called.
+				    window.setTimeout(function () {
+				        location.href = "index.jsp";
+				    }, 2000);
+				});
+			</script>
 
 
 </body>

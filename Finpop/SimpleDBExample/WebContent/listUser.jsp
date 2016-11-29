@@ -34,7 +34,7 @@
 				<a href="search.jsp"><img id="logo" src="img/logo.png"></img></a>
 				<form id="search_form" method="POST" action='SearchController' name="DynamicSearch">
 					<input id="search_bar" type="text" name="keyword"
-						value="" placeholder="Hi <%out.print(storedLogin);%> search Company or Hedgefund">
+						value="" placeholder="Search Company or Hedgefund">
 						<input id="submit_button" type="submit" value="Search" />
 				</form>	
 					<div id="menu"><a href="PortfolioController?action=listPortfolio&userId=<%out.print(storedLogin);%>"><%out.print(storedLogin);%>'s Portfolio</a>
@@ -61,9 +61,9 @@
 						<td align="center"><c:out value="${portfolio.getStockPrice()}" /></td>
 						<td align="center"><c:out value="${portfolio.getNumShares()}" /></td>
 						<td align="center"><c:out value="${portfolio.getTotalMoney()}" /></td>
-						<td align="center"><input id="update_value"></input><a
-							href="PortfolioController?action=updateCompany&userId=<%out.print(storedLogin); %>&compName=<c:out value="${portfolio.getCompName()}"/>">Update</a></td>
-						<td align="center"><a
+						<td align="center"><input class="update" id="update_value_<c:out value="${portfolio.getCompName()}" />" name="number"></input><input
+							type="submit" value="Update" class="update_button" onclick="updatePortfolio();" id="update_button" name="PortfolioController&updateCompany&<%out.print(storedLogin); %>&<c:out value="${portfolio.getCompName()}"/>"></input></td>
+						<td align="center"><a class="delete"
 							href="PortfolioController?action=deleteCompany&userId=<%out.print(storedLogin); %>&compName=<c:out value="${portfolio.getCompName()}"/>">Delete</a></td>
 					</tr>
 				</c:forEach>
@@ -72,6 +72,7 @@
 	</div>
 </body>
       <script src="js/search.js"></script>
+      <script src="js/updatePortfolio.js"></script>
 
 <%
 		} else {

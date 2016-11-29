@@ -79,9 +79,10 @@ public class SearchController extends HttpServlet {
 				view.forward(req, res);
 			}
 			else{
-				PrintWriter out = res.getWriter();
-				out.write("Sorry no results were found");
-				
+				req.setAttribute("keyword", keyword);
+				RequestDispatcher view = req.getRequestDispatcher("/noResults.jsp");
+				view.forward(req, res);
+
 			}
 			
 			

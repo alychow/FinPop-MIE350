@@ -40,7 +40,7 @@
 	<div class="container">
 			<form id="search_form" method="POST" action='SearchController' name="DynamicSearch">
 				<input id="search_bar" type="text" name="keyword"
-					value="" placeholder="Hi <%out.print(storedLogin);%> search Company or Hedgefund">
+					value="" placeholder="Search Company or Hedgefund">
 					<input id="submit_button" type="submit" value="Search" />
 			</form>
 			

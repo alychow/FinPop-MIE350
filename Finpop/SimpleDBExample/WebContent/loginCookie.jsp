@@ -7,13 +7,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style/cookie.css">
 
-<title>Login Session</title>
+<title>Login</title>
 </head>
 <body>
 
 
-<h2>Logging in with Session</h2>
+<h2 style="text-align:center">Logging in</h2>
 
 <% 
 	
@@ -53,7 +54,7 @@
 			Cookie cookie = new Cookie("loginCookie", username);
 			// add cookie back into repsonse header
 			response.addCookie(cookie);
-			out.print("Login Successful. Welcome back " + username+" you will be redirected in 2 seconds");
+			out.print("<div style = 'text-align:center;'id='success'>Login Successful. </br>Welcome back " + username+"</br> You will be redirected in 2 seconds</br></br><img style='width:100px' src='img/squares.gif'/></div>");
 			%>
 			<script>
 				$(document).ready(function () {
@@ -68,7 +69,7 @@
 /* 			out.print("<br/><a href='listUsers.jsp'>List Users</a><br/>");
  */		} else {
 			// login failed
-			out.print("Login Unsuccessful. Please go back and try again");
+			out.print("<div style='text-align:center'>Login Unsuccessful. Please go back and try again</div>");
 			%>
 			<script>
 				$(document).ready(function () {
@@ -83,10 +84,10 @@
 	} else {	
 		// a value was laready stored in the session
 		// a user is already logged in 
-		out.print("Someone is already logged in as " + storedLogin+"<br/>");
-		out.print("<a href='search.jsp'>Continue as current user</a><br/>");
-		out.print("<br/>Sorry, need to logoff first. <br/>");
-		out.print("<a href='deleteCookie.jsp'>Log off</a><br/>");
+		out.print("<div style='text-align:center'> Someone is already logged in as " + storedLogin+"<br/></div>");
+		out.print("<div style='text-align:center;margin:15px;'><a href='search.jsp'>Continue as current user</a><br/></div>");
+		out.print("<div style='text-align:center'><br/>Sorry, need to logoff first. <br/></div>");
+		out.print("<div style='text-align:center;margin:15px;'><a href='deleteCookie.jsp'>Log off</a><br/></div>");
 	}
 %>
 

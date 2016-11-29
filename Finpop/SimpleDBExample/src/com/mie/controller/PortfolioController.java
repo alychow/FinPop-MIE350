@@ -29,7 +29,8 @@ public class PortfolioController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String forward = "";
 		String action = request.getParameter("action");
-		
+		System.out.println(action);
+
 		if(action.equalsIgnoreCase("listPortfolio")){
 				
 				String userId = (request.getParameter("userId"));
@@ -45,14 +46,14 @@ public class PortfolioController extends HttpServlet {
 				request.setAttribute("portfolio", dao.selectUserPortfolio(userId));
 			
 		}else if(action.equalsIgnoreCase("updateCompany")){
-			
-				String userId = request.getParameter("userId");
-				String compName = request.getParameter("compName");
-				String value = "100";
 				
+				String userId = request.getParameter("userid");
+				String compName = request.getParameter("compName");
+				String value = request.getParameter("number");
 				dao.updateCompFromPortfolio(compName,Integer.parseInt(value),userId);
 				forward = LIST_PORTFOLIO;
 				request.setAttribute("portfolio", dao.selectUserPortfolio(userId));
+				
 		}
 		
 

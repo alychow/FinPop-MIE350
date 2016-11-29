@@ -3,10 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="style/results.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -14,6 +13,7 @@
 
 <title>FinPOP</title>
 </head>
+<body>
 <% String login = request.getParameter("login"); 
 	
 		Cookie[] cookies = request.getCookies();
@@ -38,31 +38,13 @@
 					<div id="menu"><a href="PortfolioController?action=listPortfolio&userId=<%out.print(storedLogin);%>"><%out.print(storedLogin);%>'s Portfolio</a>
 					<a href="deleteCookie.jsp">Logout</a></div>
 			</div>
-<body>
-<div class="page">
-
-	<div id="search_results" >The following Companies match your search keyword "<b><%=request.getAttribute("keyword")%></b>":</div>			
-		
-	<div class="company">
-			<h1 id="company_name"><c:out value="${company.getCompName()}" /></h1>
-			<h3>$<c:out value="${company.getStockPrice()}" /> | <c:out value="${company.getTicker()}" /> | <c:out value="${company.getNation()}" /></h3>
-			<div><c:out value="${company.getDesc()}" /></div>
-			<h4 class="table_title">Hedgefunds that are currently invested in <c:out value="${company.getCompName()}"/> as of <%=new java.util.Date()%></h4>
-			<c:forEach items="${hedgeList}" var="hedgeFund">
-						<div id="hedgeInvests"><c:out value="${hedgeFund.getHedgeName()}" /></div>
-			</c:forEach>
-			<form id="add_to_portfolio" method="POST" action='PortfolioController&<c:out value="${company.getCompName()}" />&<c:out value="${company.getTicker()}" />&<%out.print(storedLogin);%>' name="add_to_portfolio">
-					<input id="number_of_shares" type="text" name="number"
-						 placeholder="Number of Shares of <c:out value="${company.getCompName()}" />">
-						<input id="add_button" type="submit" value="Add to Portfolio" />
-			</form>	
-	</div>
-	</div>
+			<div class="page">
+			
+				<div id="search_results" >No Companies or Hedgefunds match your search keyword "<b><%=request.getAttribute("keyword")%></b>"</div>			
+			</div>
+							<img style="border-radius:500px;width:500px;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);" src="img/team.png"/>
+			
 </body>
-      <script src="js/search.js"></script>
-            <script src="js/addtoPortfolio.js"></script>
-      
-
 <%
 		} else {
 			%><a id="login_button" href="index.jsp">Login</a><%

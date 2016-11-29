@@ -44,7 +44,7 @@ public class UserController extends HttpServlet {
 		String feedback = new String();
 		feedback = dao.insertUser(user);
 		request.setAttribute("feedback", feedback);
-		RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/createUserLanding.jsp");
 		view.forward(request, response);
 	}
 
