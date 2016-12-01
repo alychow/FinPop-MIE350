@@ -42,7 +42,8 @@
 			
 				<div id="search_results" >No Companies or Hedgefunds match your search keyword "<b><%=request.getAttribute("keyword")%></b>"</div>			
 			</div>
-							<img style="border-radius:500px;width:500px;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);" src="img/team.png"/>
+			<h2 style="text-align:center">Nothing Found Except For Banana Tester!!</h2>
+							<img style="border-radius:300px;width:300px;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);margin-top:50px;" src="img/noresults.png"/>
 			
 </body>
 <%

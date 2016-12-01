@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<div style="text-align:center;margin-top:50px;"><%=request.getAttribute("feedback")%></br>
+<div style="text-align:center;margin-top:100px;"><%=request.getAttribute("feedback")%></br>
 		You Will Be Redirected To The Login Page Shortly</br>
 		<img src="img/squares.gif" style="width:50px;"/></div>
 

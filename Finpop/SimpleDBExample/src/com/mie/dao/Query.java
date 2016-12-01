@@ -252,7 +252,7 @@ public class Query {
 	public Company selectCompany (String search){
 		Company comp = new Company();
 		search = "'" + search + "'";
-		String searchQuery = "SELECT CompanyName,Ticker,Nationality,StockPrice,Description FROM Company WHERE CompanyName = " + search+" "
+		String searchQuery = "SELECT CompanyName,Ticker,Nationality,StockPrice,Description,LogoURL FROM Company WHERE CompanyName = " + search+" "
 				+ "OR Ticker = "+search;
 		
 		try{
@@ -264,6 +264,8 @@ public class Query {
 			comp.setNation(rs.getString(3));
 			comp.setStockPrice( Double.parseDouble(rs.getString(4)));
 			comp.setDesc(rs.getString(5));
+			comp.setLogoURL(rs.getString(6));
+
 		}
 		catch(SQLException e){
 			e.printStackTrace();

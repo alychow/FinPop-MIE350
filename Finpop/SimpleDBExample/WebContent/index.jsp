@@ -16,7 +16,7 @@
 		<label>Username:</label> <br/><input type="text" name="loginParameter" />
 		<br/>		<br/>
 		
-		<label>Password:</label> <br/><input type="text" name="pswdParameter" />
+		<label>Password:</label> <br/><input type="password" name="pswdParameter" />
 		<br/>
 				<br/>
 		

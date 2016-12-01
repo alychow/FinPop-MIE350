@@ -10,7 +10,7 @@
 <form action="UserController" method="get"> 	
 
 			<label>Username:</label></br><input type="text" name="username"></br>
-			<label>Password:</label></br><input type="text" name="password"></br>
+			<label>Password:</label></br><input type="password" name="password"></br>
 			<label>First Name:</label></br><input type="text" name="firstname"></br>
 			<label>Last Name:</label></br><input type="text" name="lastname"></br></br>
 

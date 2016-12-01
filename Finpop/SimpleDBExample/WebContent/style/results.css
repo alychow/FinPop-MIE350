@@ -84,6 +84,10 @@ input#search_bar{
 	padding-right:30px;
 	
 }
+#company_logo {
+	width:100px;
+	float:right;
+}
 
 .table_title{
 	text-align: center;

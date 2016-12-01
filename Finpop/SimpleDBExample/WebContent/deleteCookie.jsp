@@ -32,7 +32,7 @@
 	
 	<div style="text-align:center;margin-top:50px;">You have been logged out <br/><br/>
 	
-	You will be redirected to the login page in a few seconds.</br><img src="img/squares.gif" style="width:50px"/></div>
+	You will be redirected to the login page in a few seconds.</br><img src="img/squares.gif" style="width:100px"/></div>
 		<script>
 				$(document).ready(function () {
 				    // Handler for .ready() called.

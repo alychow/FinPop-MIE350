@@ -44,6 +44,7 @@
 	<div id="search_results" >The following Companies match your search keyword "<b><%=request.getAttribute("keyword")%></b>":</div>			
 		
 	<div class="company">
+			<img id="company_logo" src="<c:out value="${company.getLogoURL()}" />"/>
 			<h1 id="company_name"><c:out value="${company.getCompName()}" /></h1>
 			<h3>$<c:out value="${company.getStockPrice()}" /> | <c:out value="${company.getTicker()}" /> | <c:out value="${company.getNation()}" /></h3>
 			<div><c:out value="${company.getDesc()}" /></div>
