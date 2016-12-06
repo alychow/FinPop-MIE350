@@ -337,7 +337,7 @@ public class Query {
 		return compList;
 	}
 	
-	
+	//gets the users portfolio with investment information such as company, number of shares in company
 	public ArrayList<UserPortfolio> selectUserPortfolio(String username){
 		
 		username = "'" + username + "'";
@@ -449,6 +449,7 @@ public class Query {
 		return nameExists;
 	}
 	
+	//Check if password is greater than 8 characters 
 	public boolean validPassword(String pass){
 		boolean validPass = false;
 		if(pass.length() >= 8){
