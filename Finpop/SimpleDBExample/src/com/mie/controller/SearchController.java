@@ -30,7 +30,7 @@ public class SearchController extends HttpServlet {
 	public SearchController() {
 		super();
 	}
-
+	//doGet searches the database for the particular keyword
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		PrintWriter out = res.getWriter();
 		
@@ -47,7 +47,8 @@ public class SearchController extends HttpServlet {
 		out.write(searchResults.get(i));
 		out.close();
 	}
-
+	
+	//doPost forwards the search keyword to the specific page
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
 			String keyword = req.getParameter("keyword");
@@ -79,6 +80,7 @@ public class SearchController extends HttpServlet {
 				view.forward(req, res);
 			}
 			else{
+				//if there is no match for keyword user is redirected to no results page
 				req.setAttribute("keyword", keyword);
 				RequestDispatcher view = req.getRequestDispatcher("/noResults.jsp");
 				view.forward(req, res);
