@@ -2,18 +2,17 @@
 	pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<link rel="stylesheet" type="text/css" href="style/editUser.css">
 <link rel="stylesheet" type="text/css" href="style/results.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 <title>FinPOP</title>
 </head>
 <body>
+
 <% String login = request.getParameter("login"); 
 	
 		Cookie[] cookies = request.getCookies();
@@ -38,22 +37,26 @@
 					<div id="menu">
 					<a href="editUser.jsp">My Account</a>
 					<a href="PortfolioController?action=listPortfolio&userId=<%out.print(storedLogin);%>"><%out.print(storedLogin);%>'s Portfolio</a>
-					<a href="deleteCookie.jsp">Logout</a>
-					</div>
+					<a href="deleteCookie.jsp">Logout</a></div>
 			</div>
-			<div class="page">
-			
-				<div id="search_results" >No Companies or Hedgefunds match your search keyword "<b><%=request.getAttribute("keyword")%></b>"</div>			
-			</div>
-			<h2 style="text-align:center">Nothing Found Except For Banana Tester!!</h2>
-							<img style="border-radius:300px;width:300px;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);margin-top:50px;" src="img/noresults.png"/>
-			
+<div id="edit-user">
+<img id="user-profile-photo" alt="user-profile" src="img/user.png"/>
+<h3>Change <%out.print(storedLogin);%>'s Password</h3>
+<form action="UserController" method="POST"> 	
+
+			<label><input id="username" name="username" value="<%out.print(storedLogin);%>"></input></label>
+			<label>Password:</label></br><input type="password" name="password"></br></br>
+
+<input id="update-user" type="submit" value="Update"> 
+</form>
+</div>
 </body>
+      <script src="js/search.js"></script>
+
 <%
 		} else {
 			%><a id="login_button" href="index.jsp">Login</a><%
-			out.print("</br>You are NOT allowed to view private data for " + login + ".");
+			out.print("You are NOT allowed to view private data for " + login + ".");
 		}
 	%>
-
 </html>

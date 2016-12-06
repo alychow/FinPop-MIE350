@@ -1,14 +1,4 @@
-#back-button {
-	margin-left:10px;
-	width:30px;
-}
-
-#back-button:hover {
-	margin-left:10px;
-	width:30px;
-	opacity:0.5;
-}
-#new-user{
+#edit-user{
   position: absolute;
   width: 300px;
   height: 200px;
@@ -23,7 +13,7 @@
  	width:100px;
  }
  
-#create-user {
+#update-user {
  display: block;
   	margin: 0 auto;
 
@@ -34,7 +24,7 @@
     border-radius: 5px;
  	border:none;
  }
-#create-user:hover {
+#update-user:hover {
  display: block;
   	margin: 0 auto;
 
@@ -45,4 +35,8 @@
     border-radius: 5px;
  	border:none;
  	opacity:0.5;
+ }
+ 
+ input#username{
+ display:none;
  }
