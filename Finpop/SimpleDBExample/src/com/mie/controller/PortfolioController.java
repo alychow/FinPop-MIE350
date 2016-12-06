@@ -30,27 +30,29 @@ public class PortfolioController extends HttpServlet {
 		String forward = "";
 		String action = request.getParameter("action");
 		System.out.println(action);
-		//if action parameter is listPortfolio forward user to /listUser.jsp
 		if(action.equalsIgnoreCase("listPortfolio")){
-				
+		//if action parameter is listPortfolio forward user to /listPortfolio.jsp
 				String userId = (request.getParameter("userId"));
 				forward = LIST_PORTFOLIO;
 				request.setAttribute("portfolio", dao.selectUserPortfolio(userId));
 			
-		//else if action parameter is deleteCompany
 		}else if(action.equalsIgnoreCase("deleteCompany")){
-			
+		//else if action parameter is deleteCompany delete the tuple that corresponds to compName and userID from the portfolio table
+			//refresh the /listPortfolio.jsp page	
 				String userId = request.getParameter("userId");
 				String compName = request.getParameter("compName");
 				dao.deleteCompFromPortfolio(compName,userId);
 				forward = LIST_PORTFOLIO;
 				request.setAttribute("portfolio", dao.selectUserPortfolio(userId));
-			
+		
 		}else if(action.equalsIgnoreCase("updateCompany")){
-				
+		//else if action is equal to updateCompany update the tuple's number of shares corresponding to compName and userid
+			//refresh the /listPortfolio.jsp page
 				String userId = request.getParameter("userid");
 				String compName = request.getParameter("compName");
 				String value = request.getParameter("number");
+				//convert the value string to an Integer
+					//JS is used to check if the value is an Integer
 				dao.updateCompFromPortfolio(compName,Integer.parseInt(value),userId);
 				forward = LIST_PORTFOLIO;
 				request.setAttribute("portfolio", dao.selectUserPortfolio(userId));
@@ -62,9 +64,10 @@ public class PortfolioController extends HttpServlet {
 		view.forward(request, response);
 	}
 
+	//doPost inserts a company and the number of shares into the portfolio table with the userid
 	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-
+	
 		String userID = request.getParameter("userid");
 		String info = request.getParameter("addinfo");
 		Query dao = new Query();
@@ -77,6 +80,7 @@ public class PortfolioController extends HttpServlet {
 		if(dao.insertPortfolio(port)){
 			out.printf("Company: %s | Ticker: %s | Number of Shares: %d | \n added to User: %s",port.getCompName(),port.getTicker(),port.getNumShares(),port.getUsername());
 		}else{
+			//error message if the company & number of shares cannot be added
 			out.printf("There was an issue adding the company to the portfolio.\nPlease try again \nCompany: %s | Ticker: %s | Number of Shares: %d | \n added to User: %s",port.getCompName(),port.getTicker(),port.getNumShares(),port.getUsername());
 		}
 		
