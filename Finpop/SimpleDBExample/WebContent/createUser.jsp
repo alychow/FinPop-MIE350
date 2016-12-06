@@ -1,6 +1,6 @@
 <html>
 <link rel="stylesheet" type="text/css" href="style/createUser.css">
-<title>MIE350 Sample DB Web App: Add/Update A User</title>
+<title>FinPOP</title>
 </head>
 <a href="index.jsp"><img id="back-button" src="img/left-arrow.png"/></a>
 <body>

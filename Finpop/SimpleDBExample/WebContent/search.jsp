@@ -30,7 +30,9 @@
 		if (storedLogin!=(null)){
 
 			%>
-					<div id="menu"><a href="PortfolioController?action=listPortfolio&userId=<%out.print(storedLogin);%>"><%out.print(storedLogin);%>'s Portfolio</a>
+					<div id="menu">
+					<a href="editUser.jsp">My Account</a>
+					<a href="PortfolioController?action=listPortfolio&userId=<%out.print(storedLogin);%>"><%out.print(storedLogin);%>'s Portfolio</a>
 					<a href="deleteCookie.jsp">Logout</a></div>
 <body>
 			

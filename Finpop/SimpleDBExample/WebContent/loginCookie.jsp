@@ -69,7 +69,7 @@
 /* 			out.print("<br/><a href='listUsers.jsp'>List Users</a><br/>");
  */		} else {
 			// login failed
-			out.print("<div style='text-align:center'>Login Unsuccessful. Please go back and try again</div>");
+			out.print("<div style='text-align:center'>Login Unsuccessful. Please go back and try again</br></br><img style='width:100px' src='img/squares.gif'/></div>");
 			%>
 			<script>
 				$(document).ready(function () {

@@ -155,19 +155,28 @@ public class Query {
 	}
 	
 	/* This function updates the password of the user */
-	public void updatePassword(int username, String newPassword) {
+	public boolean updatePassword(String username, String newPassword) {
+		
+		username = "'"+username+"'";
+		newPassword = "'"+newPassword+"'";
+		
+		if(validPassword(newPassword)){
+			String updateQuery = "UPDATE User SET Password=" + newPassword +
+					"WHERE Username=" + username;
 
-		String updateQuery = "UPDATE Users SET Password='?' WHERE Username='?'";
+			try {
+				Statement stat = connection.createStatement();
+				stat.executeUpdate(updateQuery);
 
-		try {
-			PreparedStatement ps = connection.prepareStatement(updateQuery);
-			ps.setString(1, newPassword);
-			ps.setInt(2, username);
-			ps.executeUpdate(updateQuery);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return false;
+			}
+			return true;
 		}
+		else
+			return false;
+
 	}
 	
 	/* This function updates the first name of the user */
@@ -491,9 +500,7 @@ public class Query {
 			}
 			else{
 				rs = stat.executeQuery(matchQuery);
-				
-				rs.next();
-				if(rs.wasNull()){
+				if(!rs.isBeforeFirst()){
 					//Please enter correct password
 					correct = false;
 				}

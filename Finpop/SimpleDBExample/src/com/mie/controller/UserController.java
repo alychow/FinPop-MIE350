@@ -48,9 +48,27 @@ public class UserController extends HttpServlet {
 		view.forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		Query dao = new Query();
+
+		String username = request.getParameter("username");
+
+		String newPassword = request.getParameter("password");
+
+		boolean updated = dao.updatePassword(username, newPassword);
 		
+		if(updated){
+			request.setAttribute("redirectpath", "deleteCookie.jsp");
+			request.setAttribute("feedback", "User password updated</br>");
+		}else {
+			request.setAttribute("redirectpath", "editUser.jsp");
+			request.setAttribute("feedback", "User password NOT updated</br>");
+		}
+		
+
+		RequestDispatcher view = request.getRequestDispatcher("/editUserLanding.jsp");
+		view.forward(request, response);
 		
 	}
 }
