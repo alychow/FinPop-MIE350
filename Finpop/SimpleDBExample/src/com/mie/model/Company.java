@@ -5,8 +5,9 @@ import com.mie.dao.*;
 
 		/* ---------------------------------COMPANY-----------------------------------*/
 	
-	/* This class stores Company information of the name, ticker, headquarter nation, stock price (every quarter), description and logo URL to be 
-	displayed onto each Company's profile when selected from the user's portfolio or in search results. */
+	/* This class stores Company information of the name, ticker, nationality of the company, stock price (every quarter), 
+	description and logo URL to be displayed onto each Company's profile when selected from the user's portfolio or in 
+	search results. */
 
 public class Company {
 
@@ -69,12 +70,12 @@ public class Company {
 		this.ticker = s;
 	}
 	
-	// Returns the company headquarter city 
+	// Returns the nationality 
 	public String getNation(){
 		return this.nation;
 	}
 	
-	// Sets the company headquarter city 
+	// Sets the nationality 
 	public void setNation(String s){
 		this.nation = s;
 	}
@@ -99,7 +100,7 @@ public class Company {
 		this.desc = s;
 	}
 	
-	// Returns hedge funds invested in the current company 
+	// Returns hedge funds invested in the current company, updated quarterly
 	public ArrayList<Hedgefund> getHedgeInvested(){
 		return dao.selectCompHedgeList(this.compName);
 	}
