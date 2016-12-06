@@ -10,6 +10,7 @@
 </head>
 <body>
 
+
 <div id="login">
 	<img id="login-logo" src="img/logo.png"></img>	
 	<form id="login-form" action="loginCookie.jsp" method="post">
