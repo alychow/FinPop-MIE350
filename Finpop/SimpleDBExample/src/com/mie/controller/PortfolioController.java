@@ -18,7 +18,7 @@ import com.mie.model.Portfolio;
 
 public class PortfolioController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static String LIST_PORTFOLIO = "/listUser.jsp";
+	private static String LIST_PORTFOLIO = "/listPortfolio.jsp";
 	private Query dao;
 
 	public PortfolioController() {
