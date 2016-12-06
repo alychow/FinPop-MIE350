@@ -2,8 +2,7 @@ package com.mie.model;
 
 		/* ---------------------------------PORTFOLIO-----------------------------------*/
 	
-	/* This class stores Portfolio information of the username, company name, ticker and number of shares to be 
-	displayed onto each user's portfolio. */
+	/* This class stores Portfolio information of the username, company name, ticker and number of shares. */
 
 public class Portfolio {
 
