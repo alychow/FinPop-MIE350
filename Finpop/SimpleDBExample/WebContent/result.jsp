@@ -12,10 +12,8 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-
 <title>FinPOP</title>
 </head>
-<body>
 <% String login = request.getParameter("login"); 
 	
 		Cookie[] cookies = request.getCookies();
@@ -40,39 +38,31 @@
 					<div id="menu"><a href="PortfolioController?action=listPortfolio&userId=<%out.print(storedLogin);%>"><%out.print(storedLogin);%>'s Portfolio</a>
 					<a href="deleteCookie.jsp">Logout</a></div>
 			</div>
+<body>
+<div class="page">
 
-	<div class="page">
-		<h1 style="text-align:center;"><%out.print(storedLogin); %>'s Portfolio</h1>
-
-		<table class="result_table">
-			<thead>
-				<tr>
-					<th>Company Name</th>
-					<th>Stock Price</th>
-					<th>Number of Shares</th>
-					<th>Total Money</th>
-					<th colspan=2></th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${portfolio}" var="portfolio">
-					<tr>
-						<td align="center"><c:out value="${portfolio.getCompName()}" /></td>
-						<td align="center"><c:out value="${portfolio.getStockPrice()}" /></td>
-						<td align="center"><c:out value="${portfolio.getNumShares()}" /></td>
-						<td align="center"><c:out value="${portfolio.getTotalMoney()}" /></td>
-						<td align="center"><input class="update" id="update_value_<c:out value="${portfolio.getCompName()}" />" name="number"></input><input
-							type="submit" value="Update" class="update_button" onclick="updatePortfolio();" id="update_button" name="PortfolioController&updateCompany&<%out.print(storedLogin); %>&<c:out value="${portfolio.getCompName()}"/>"></input></td>
-						<td align="center"><a class="delete"
-							href="PortfolioController?action=deleteCompany&userId=<%out.print(storedLogin); %>&compName=<c:out value="${portfolio.getCompName()}"/>">Delete</a></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+	<div id="search_results" >The following Companies match your search keyword "<b><%=request.getAttribute("keyword")%></b>":</div>			
+		
+	<div class="company">
+			<img id="company_logo" src="<c:out value="${company.getLogoURL()}" />"/>
+			<h1 id="company_name"><c:out value="${company.getCompName()}" /></h1>
+			<h3>$<c:out value="${company.getStockPrice()}" /> | <c:out value="${company.getTicker()}" /> | <c:out value="${company.getNation()}" /></h3>
+			<div><c:out value="${company.getDesc()}" /></div>
+			<h4 class="table_title">Hedgefunds that are currently invested in <c:out value="${company.getCompName()}"/> as of <%=new java.util.Date()%></h4>
+			<c:forEach items="${hedgeList}" var="hedgeFund">
+						<div id="hedgeInvests"><c:out value="${hedgeFund.getHedgeName()}" /></div>
+			</c:forEach>
+			<form id="add_to_portfolio" method="POST" action='PortfolioController&<c:out value="${company.getCompName()}" />&<c:out value="${company.getTicker()}" />&<%out.print(storedLogin);%>' name="add_to_portfolio">
+					<input id="number_of_shares" type="text" name="number"
+						 placeholder="Number of Shares of <c:out value="${company.getCompName()}" />">
+						<input id="add_button" type="submit" value="Add to Portfolio" />
+			</form>	
+	</div>
 	</div>
 </body>
       <script src="js/search.js"></script>
-      <script src="js/updatePortfolio.js"></script>
+            <script src="js/addtoPortfolio.js"></script>
+      
 
 <%
 		} else {
@@ -80,4 +70,5 @@
 			out.print("You are NOT allowed to view private data for " + login + ".");
 		}
 	%>
+
 </html>

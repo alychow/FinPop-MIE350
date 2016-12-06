@@ -4,16 +4,17 @@ $("#search_form").on('keyup', function (e) {
 	 var Value = document.getElementById("search_bar");
      var s = Value.value;
      console.log(s);
-     if(s!=""){
-		event.preventDefault();
- 
+     
+     if(s != " "){
+    	 event.preventDefault();
+		
   // Get some values from elements on the page:
-  var $form = $( this ),
+	var $form = $( this ),
     term = $form.find( "input[name='keyword']" ).val(),
     url = $form.attr( "action" );
  
   // Send the data using post
-  var posting = $.post( url, { keyword: term } );
+  var posting = $.get( url, { keyword: term } );
  
   // Put the results in a div
   posting.done(function( data ) {
@@ -21,7 +22,9 @@ $("#search_form").on('keyup', function (e) {
 	  console.log(list);
 	  $( "#search_bar" ).autocomplete({
 	      source: list
-	    });
+	  });
   });
- }
+}
 });
+
+

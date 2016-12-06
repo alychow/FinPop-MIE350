@@ -1,9 +1,24 @@
-#login_button {
+#menu {
 	position: fixed;
 	top: 0px;
 	right: 0px;
-	margin: 10px;
+	margin: 10px 30px;
+	margin-top:18px;
+
 }
+#menu a {
+	margin-left:10px;
+	color: #000000;
+    text-decoration: none;
+}
+
+#menu a:hover {
+	margin-left:10px;
+	color: #000000;
+    text-decoration: none;
+    opacity:0.5;
+}
+
 #logo {
 	width:250px;
 	height:120px;	
@@ -21,11 +36,13 @@
 }
 
 #search_bar {
+	font-weight:500;
 	width:400px;
 	display: block;
   	margin: 10px auto;
   	outline: none;
   	padding:5px;
+
 }
 
 #submit_button {
@@ -40,6 +57,18 @@
  	border:none;
 }
 
+#submit_button:hover {
+	display: block;
+  	margin: 0 auto;
+
+ 	background-color: #265a3e;
+ 	font-size: 15px;
+ 	color: white;
+    padding: 8px 30px;
+    border-radius: 5px;
+ 	border:none;
+ 	opacity:0.5;
+}
 .ui-menu .ui-menu-item{
     font-size:10px;
 }

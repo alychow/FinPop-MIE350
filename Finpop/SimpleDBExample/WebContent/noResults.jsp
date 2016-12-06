@@ -3,15 +3,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="style/results.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 
 <title>FinPOP</title>
 </head>
@@ -40,44 +38,19 @@
 					<div id="menu"><a href="PortfolioController?action=listPortfolio&userId=<%out.print(storedLogin);%>"><%out.print(storedLogin);%>'s Portfolio</a>
 					<a href="deleteCookie.jsp">Logout</a></div>
 			</div>
-
-	<div class="page">
-		<h1 style="text-align:center;"><%out.print(storedLogin); %>'s Portfolio</h1>
-
-		<table class="result_table">
-			<thead>
-				<tr>
-					<th>Company Name</th>
-					<th>Stock Price</th>
-					<th>Number of Shares</th>
-					<th>Total Money</th>
-					<th colspan=2></th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${portfolio}" var="portfolio">
-					<tr>
-						<td align="center"><c:out value="${portfolio.getCompName()}" /></td>
-						<td align="center"><c:out value="${portfolio.getStockPrice()}" /></td>
-						<td align="center"><c:out value="${portfolio.getNumShares()}" /></td>
-						<td align="center"><c:out value="${portfolio.getTotalMoney()}" /></td>
-						<td align="center"><input class="update" id="update_value_<c:out value="${portfolio.getCompName()}" />" name="number"></input><input
-							type="submit" value="Update" class="update_button" onclick="updatePortfolio();" id="update_button" name="PortfolioController&updateCompany&<%out.print(storedLogin); %>&<c:out value="${portfolio.getCompName()}"/>"></input></td>
-						<td align="center"><a class="delete"
-							href="PortfolioController?action=deleteCompany&userId=<%out.print(storedLogin); %>&compName=<c:out value="${portfolio.getCompName()}"/>">Delete</a></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
+			<div class="page">
+			
+				<div id="search_results" >No Companies or Hedgefunds match your search keyword "<b><%=request.getAttribute("keyword")%></b>"</div>			
+			</div>
+			<h2 style="text-align:center">Nothing Found Except For Banana Tester!!</h2>
+							<img style="border-radius:300px;width:300px;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);margin-top:50px;" src="img/noresults.png"/>
+			
 </body>
-      <script src="js/search.js"></script>
-      <script src="js/updatePortfolio.js"></script>
-
 <%
 		} else {
 			%><a id="login_button" href="index.jsp">Login</a><%
 			out.print("You are NOT allowed to view private data for " + login + ".");
 		}
 	%>
+
 </html>

@@ -11,6 +11,8 @@ public class Company {
 	private String nation;
 	private double stockPrice;
 	private String desc;
+	private String logoURL;
+
 	private Query dao = new Query();
 	
 	public Company(){
@@ -35,6 +37,14 @@ public class Company {
 	
 	public void setCompName(String s){
 		this.compName = s;
+	}
+	
+	public String getLogoURL(){
+		return this.logoURL;
+	}
+	
+	public void setLogoURL(String s){
+		this.logoURL = s;
 	}
 	
 	public String getTicker(){
@@ -69,7 +79,7 @@ public class Company {
 		this.desc = s;
 	}
 	
-	public ArrayList<String> getHedgeInvested(){
+	public ArrayList<Hedgefund> getHedgeInvested(){
 		return dao.selectCompHedgeList(this.compName);
 	}
 	

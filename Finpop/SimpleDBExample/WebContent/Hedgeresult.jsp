@@ -12,10 +12,8 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-
 <title>FinPOP</title>
 </head>
-<body>
 <% String login = request.getParameter("login"); 
 	
 		Cookie[] cookies = request.getCookies();
@@ -40,39 +38,39 @@
 					<div id="menu"><a href="PortfolioController?action=listPortfolio&userId=<%out.print(storedLogin);%>"><%out.print(storedLogin);%>'s Portfolio</a>
 					<a href="deleteCookie.jsp">Logout</a></div>
 			</div>
-
-	<div class="page">
-		<h1 style="text-align:center;"><%out.print(storedLogin); %>'s Portfolio</h1>
-
-		<table class="result_table">
+<body>
+<div class="page">
+	<div id="search_results" >The following Hedgefunds match your search keyword "<b><%=request.getAttribute("keyword")%></b>":</div>
+	
+	<div class="hedgefund">
+			<h1><c:out value="${hedgefund.getHedgeName()}" /></h1>
+			<h3><c:out value="${hedgefund.getCountry()}" /> | <c:out value="${hedgefund.getHQ()}" /></h3>
+			<div><c:out value="${hedgefund.getDesc()}" /></div>
+			<h4 class="table_title">Companies that <c:out value="${hedgefund.getHedgeName()}" /> is currently invested in as of <%=new java.util.Date()%></h4>
+			<table class="result_table" border=0>
 			<thead>
 				<tr>
 					<th>Company Name</th>
-					<th>Stock Price</th>
-					<th>Number of Shares</th>
-					<th>Total Money</th>
-					<th colspan=2></th>
+					<th>Ticker</th>
+					<th>Number of Shares Owned</th>
+					
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${portfolio}" var="portfolio">
-					<tr>
-						<td align="center"><c:out value="${portfolio.getCompName()}" /></td>
-						<td align="center"><c:out value="${portfolio.getStockPrice()}" /></td>
-						<td align="center"><c:out value="${portfolio.getNumShares()}" /></td>
-						<td align="center"><c:out value="${portfolio.getTotalMoney()}" /></td>
-						<td align="center"><input class="update" id="update_value_<c:out value="${portfolio.getCompName()}" />" name="number"></input><input
-							type="submit" value="Update" class="update_button" onclick="updatePortfolio();" id="update_button" name="PortfolioController&updateCompany&<%out.print(storedLogin); %>&<c:out value="${portfolio.getCompName()}"/>"></input></td>
-						<td align="center"><a class="delete"
-							href="PortfolioController?action=deleteCompany&userId=<%out.print(storedLogin); %>&compName=<c:out value="${portfolio.getCompName()}"/>">Delete</a></td>
-					</tr>
-				</c:forEach>
+			<c:forEach items="${compList}" var="comp">
+				<tr>
+							<td align="center"><c:out value="${comp.getCompanyName()}" /></td>
+							<td align="center"><c:out value="${comp.getTicker()}" /></td>
+							<td align="center"><c:out value="${comp.getSharesOwned()}" /></td>
+				</tr>
+						
+			</c:forEach>
 			</tbody>
-		</table>
+			</table>
+	</div>
 	</div>
 </body>
       <script src="js/search.js"></script>
-      <script src="js/updatePortfolio.js"></script>
 
 <%
 		} else {

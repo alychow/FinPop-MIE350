@@ -2,6 +2,7 @@ package com.mie.controller;
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,9 +26,9 @@ public class UserController extends HttpServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String firstname = request.getParameter("firstname");
@@ -43,8 +44,7 @@ public class UserController extends HttpServlet {
 		String feedback = new String();
 		feedback = dao.insertUser(user);
 		request.setAttribute("feedback", feedback);
-		
-		RequestDispatcher view = request.getRequestDispatcher("/TEST.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/createUserLanding.jsp");
 		view.forward(request, response);
 	}
 

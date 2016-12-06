@@ -29,5 +29,16 @@
 		<servlet-name>SearchController</servlet-name>
 		<url-pattern>/SearchController</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<display-name>PortfolioController</display-name>
+		<servlet-name>PortfolioController</servlet-name>
+		<servlet-class>com.mie.controller.PortfolioController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PortfolioController</servlet-name>
+		<url-pattern>/PortfolioController</url-pattern>
+	</servlet-mapping>
 
 </web-app>
