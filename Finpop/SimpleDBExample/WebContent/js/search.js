@@ -1,3 +1,10 @@
+//in order to trigger the auto complete list for the first character 
+//we triggered 'keyup'
+$(window).on( 'load',function () {
+	$("#search_form").keyup();
+});
+
+
 // Attach a submit handler to the form
 $("#search_form").on('keyup', function (e) {
   // Stop form from submitting normally

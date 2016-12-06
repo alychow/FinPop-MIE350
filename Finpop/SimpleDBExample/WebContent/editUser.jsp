@@ -4,8 +4,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<link rel="stylesheet" type="text/css" href="style/editUser.css">
 <link rel="stylesheet" type="text/css" href="style/results.css">
+<link rel="stylesheet" type="text/css" href="style/editUser.css">
+
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -34,7 +35,9 @@
 						value="" placeholder="Search Company or Hedgefund">
 						<input id="submit_button" type="submit" value="Search" />
 				</form>	
-					<div id="menu">
+					<div id="menu">					
+					<a href="resources.jsp">Resource</a>	
+					<a href="aboutUs.jsp">About Us</a>					
 					<a href="editUser.jsp">My Account</a>
 					<a href="PortfolioController?action=listPortfolio&userId=<%out.print(storedLogin);%>"><%out.print(storedLogin);%>'s Portfolio</a>
 					<a href="deleteCookie.jsp">Logout</a></div>
