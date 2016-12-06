@@ -30,13 +30,14 @@ public class PortfolioController extends HttpServlet {
 		String forward = "";
 		String action = request.getParameter("action");
 		System.out.println(action);
-
+		//if action parameter is listPortfolio forward user to /listUser.jsp
 		if(action.equalsIgnoreCase("listPortfolio")){
 				
 				String userId = (request.getParameter("userId"));
 				forward = LIST_PORTFOLIO;
 				request.setAttribute("portfolio", dao.selectUserPortfolio(userId));
-
+			
+		//else if action parameter is deleteCompany
 		}else if(action.equalsIgnoreCase("deleteCompany")){
 			
 				String userId = request.getParameter("userId");
