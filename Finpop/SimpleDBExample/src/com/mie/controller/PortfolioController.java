@@ -25,7 +25,7 @@ public class PortfolioController extends HttpServlet {
 		super();
 		dao = new Query();
 	}
-
+	//doGet has methods for addding,updating, and deleting portfolio
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String forward = "";
 		String action = request.getParameter("action");
