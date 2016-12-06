@@ -25,7 +25,7 @@ public class UserController extends HttpServlet {
 	public UserController() {
 		super();
 	}
-
+	//doGet creates a new user with input information
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 
@@ -47,7 +47,7 @@ public class UserController extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("/createUserLanding.jsp");
 		view.forward(request, response);
 	}
-
+	//doPost updates a user's password
 	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		Query dao = new Query();
