@@ -8,7 +8,7 @@ $("#add_button").on('click', function (e) {
 	     console.log(value);
      
      //check if the number of shares entered is a valid number
-     	if(!isNaN(value)&&parseInt(value)>0){
+     	if(!isNaN(value)&&parseInt(value)>0&&parseInt(value)<2147483647){
 		
      // Get some values from elements on the page:
      	var $form = $( "#add_to_portfolio" ),

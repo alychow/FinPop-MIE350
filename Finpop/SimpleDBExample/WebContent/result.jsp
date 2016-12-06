@@ -35,7 +35,9 @@
 						value="" placeholder="Search Company or Hedgefund">
 						<input id="submit_button" type="submit" value="Search" />
 				</form>	
-					<div id="menu">					
+					<div id="menu">
+					<a href="resources.jsp">Resource</a>	
+					<a href="aboutUs.jsp">About Us</a>				
 					<a href="editUser.jsp">My Account</a>
 					<a href="PortfolioController?action=listPortfolio&userId=<%out.print(storedLogin);%>"><%out.print(storedLogin);%>'s Portfolio</a>
 					<a href="deleteCookie.jsp">Logout</a></div>

@@ -1,0 +1,15 @@
+img#team-image{
+	display:block;
+    margin:auto;
+	margin-top:35px;
+	border-radius:1000px;
+	
+}
+
+.page {
+	padding:20px;
+}
+
+#resources {
+	padding-top:35px;
+}
