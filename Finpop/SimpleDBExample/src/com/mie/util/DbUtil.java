@@ -9,12 +9,16 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DbUtil {
-
+	
+	// Initializes connection object as null
 	private static Connection connection = null;
-
+	
+	// Connects the connection object to the database so queries can be run against connected database 
 	public static Connection getConnection() {
+		// Check if connection is null 
 		if (connection != null)
 			return connection;
+		// If not, proceed to get connection 
 		else {
 			try {
 				Properties prop = new Properties();
