@@ -22,7 +22,7 @@ public class Query {
 	/* ---------------------------------INSERT QUERIES-----------------------------------*/
 	
 	/* This function inserts a user into the database. It requires that a user is passed to the function with all of its
-	member fields already entered */
+	member fields already entered. */
 	
 	public String insertUser(User user) {
 		
@@ -108,6 +108,7 @@ public class Query {
 		}
 	}
 	
+	/* This function deletes the company from the users portfolio with the specified company name that is passed into the function, using the username to find the specific portfolio */
 	public void deleteCompFromPortfolio(String compName,String username){
 		username = "'" + username + "'";
 		compName = "'" + compName + "'";
@@ -121,20 +122,6 @@ public class Query {
 			e.printStackTrace();
 		}
 	}
-	
-	public void deletePortfolio(String username){
-		username = "'" + username + "'";
-		String deleteQuery = "DELETE * FROM Portfolio WHERE Username = " + username;
-		try{
-			Statement stat = connection.createStatement();
-			stat.executeQuery(deleteQuery);
-			
-		}
-		catch(SQLException e){
-			e.printStackTrace();
-		}
-	}
-	
 	
 	/*----------------------------UPDATE QUERIES----------------------------------*/
 	
@@ -202,6 +189,7 @@ public class Query {
 		}
 	}
 	
+	/* this function updates the number of shares(value) that a user(username) invests in a certain company(compName)*/
 	public void updateCompFromPortfolio(String compName, int value, String username){
 		
 		username = "'"+username+"'";
